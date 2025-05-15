@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { NConfigProvider, NMessageProvider, NDialogProvider } from 'naive-ui'
-import { useAppStore } from './store/app'
+import { useThemeStore } from './store/modules/designSetting'
 
-// Use app store for theme management
-const appStore = useAppStore()
+// Use theme store for theme management
+const themeStore = useThemeStore()
 
 // Register global functions
 declare global {
@@ -14,16 +14,17 @@ declare global {
 }
 
 // Register function to window
-window.$toggleTheme = () => appStore.toggleTheme()
+window.$toggleTheme = () => themeStore.toggleTheme()
 
 // Initialize theme on mount
 onMounted(() => {
+  themeStore.initTheme()
   console.log('App mounted, current theme:', localStorage.getItem('theme'))
 })
 </script>
 
 <template>
-  <n-config-provider :theme="appStore.theme">
+  <n-config-provider :theme="themeStore.theme">
     <n-message-provider>
       <n-dialog-provider>
         <router-view />

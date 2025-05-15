@@ -1,101 +1,44 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { darkTheme, lightTheme } from 'naive-ui'
 
-export interface DesignSettingState {
-  // Chế độ tối
-  darkTheme: boolean
-  // Theme cho toàn bộ ứng dụng
-  appTheme: string
-  // Theme cho menu bên
-  navTheme: string
-  // Theme cho header
-  headerTheme: string
-  // Hiển thị footer
-  showFooter: boolean
-  // Hiển thị breadcrumb
-  showBreadCrumb: boolean
-  // Hiển thị icon trong breadcrumb
-  showBreadCrumbIcon: boolean
-  // Hiển thị logo
-  showLogo: boolean
-  // Sử dụng sidebar dạng mix
-  isMixSidebar: boolean
-  // Sử dụng layout ngang
-  isHorizontal: boolean
-  // Fix header trong chế độ mix
-  isMixHeaderFixed: boolean
-}
+export const useThemeStore = defineStore('theme', () => {
+  const isDarkMode = ref(localStorage.getItem('theme') === 'dark')
 
-export const useDesignSettingStore = defineStore('designSetting', () => {
-  // State với giá trị mặc định
-  const darkTheme = ref(false)
-  const appTheme = ref('#2d8cf0')
-  const navTheme = ref('#001529')
-  const headerTheme = ref('#fff')
-  const showFooter = ref(true)
-  const showBreadCrumb = ref(true)
-  const showBreadCrumbIcon = ref(false)
-  const showLogo = ref(true)
-  const isMixSidebar = ref(false)
-  const isHorizontal = ref(false)
-  const isMixHeaderFixed = ref(false)
-
-  // Action để thay đổi chế độ tối
-  function setDarkTheme(value: boolean) {
-    darkTheme.value = value
-    // Lưu vào localStorage
-    localStorage.setItem('darkTheme', value ? '1' : '0')
-  }
-
-  // Action để thay đổi theme ứng dụng
-  function setAppTheme(value: string) {
-    appTheme.value = value
-    // Lưu vào localStorage
-    localStorage.setItem('appTheme', value)
-  }
-
-  // Action để thay đổi theme menu
-  function setNavTheme(value: string) {
-    navTheme.value = value
-  }
-
-  // Action để thay đổi theme header
-  function setHeaderTheme(value: string) {
-    headerTheme.value = value
-  }
-
-  // Lấy theme từ localStorage khi khởi tạo
-  function initTheme() {
-    // Khôi phục chế độ tối từ localStorage nếu có
-    const savedDarkTheme = localStorage.getItem('darkTheme')
-    if (savedDarkTheme !== null) {
-      darkTheme.value = savedDarkTheme === '1'
+  const theme = computed(() => isDarkMode.value ? darkTheme : null)
+  
+  function toggleTheme() {
+    isDarkMode.value = !isDarkMode.value
+    localStorage.setItem('theme', isDarkMode.value ? 'dark' : 'light')
+    
+    // Update body class for custom styling
+    if (isDarkMode.value) {
+      document.body.classList.add('dark')
+      document.body.classList.remove('light')
+    } else {
+      document.body.classList.add('light')
+      document.body.classList.remove('dark')
     }
+  }
 
-    // Khôi phục theme ứng dụng từ localStorage nếu có
-    const savedAppTheme = localStorage.getItem('appTheme')
-    if (savedAppTheme) {
-      appTheme.value = savedAppTheme
+  // Initialize theme
+  function initTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'light'
+    isDarkMode.value = savedTheme === 'dark'
+    
+    if (isDarkMode.value) {
+      document.body.classList.add('dark')
+      document.body.classList.remove('light')
+    } else {
+      document.body.classList.add('light')
+      document.body.classList.remove('dark')
     }
   }
 
   return {
-    darkTheme,
-    appTheme,
-    navTheme,
-    headerTheme,
-    showFooter,
-    showBreadCrumb,
-    showBreadCrumbIcon,
-    showLogo,
-    isMixSidebar,
-    isHorizontal,
-    isMixHeaderFixed,
-    
-    setDarkTheme,
-    setAppTheme,
-    setNavTheme,
-    setHeaderTheme,
+    isDarkMode,
+    theme,
+    toggleTheme,
     initTheme
   }
 }) 

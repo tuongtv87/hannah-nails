@@ -10,16 +10,16 @@
       <!-- Theme Toggle -->
       <n-tooltip trigger="hover">
         <template #trigger>
-          <n-button quaternary circle @click="appStore.toggleTheme">
+          <n-button quaternary circle @click="themeStore.toggleTheme">
             <template #icon>
               <n-icon>
-                <SunnyOutline v-if="appStore.isDarkMode" />
+                <SunnyOutline v-if="themeStore.isDarkMode" />
                 <MoonOutline v-else />
               </n-icon>
             </template>
           </n-button>
         </template>
-        {{ appStore.isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode" }}
+        {{ themeStore.isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode" }}
       </n-tooltip>
     </div>
   </n-layout-header>
@@ -28,12 +28,12 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { useAppStore } from '../store/app'
+import { useThemeStore } from '../store/modules/designSetting'
 import { SunnyOutline, MoonOutline } from '@vicons/ionicons5'
 import { NIcon, NButton, NTooltip, NLayoutHeader, NBreadcrumb, NBreadcrumbItem } from 'naive-ui'
 
-// App Store
-const appStore = useAppStore()
+// Theme Store
+const themeStore = useThemeStore()
 
 // Route for breadcrumb
 const route = useRoute()
