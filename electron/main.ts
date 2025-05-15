@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, Menu } from 'electron';
 import path from 'node:path';
 // Vì ta sử dụng ES modules, chúng ta cần dùng URL để có được đường dẫn tuyệt đối
 import { fileURLToPath } from 'url';
@@ -29,13 +29,14 @@ const DIST_PATH = process.env.DIST || path.join(__dirname, '../dist');
 const PRELOAD_PATH = path.join(__dirname, '../preload/preload.js');
 
 // Đặt tên ứng dụng trên Windows
-if (process.platform === 'win32') app.setName('Hannah Nails');
+if (process.platform === 'win32') app.setName('Hannah Management');
 
 let win: BrowserWindow | null;
 // URL của Vite Dev Server, được cung cấp bởi vite-plugin-electron
 const viteDevServerUrl = process.env.VITE_DEV_SERVER_URL;
 
 function createWindow() {
+  Menu.setApplicationMenu(null);
   win = new BrowserWindow({
     width: 1024,
     height: 768,
