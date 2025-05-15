@@ -19,7 +19,6 @@ window.$toggleTheme = () => themeStore.toggleTheme()
 // Initialize theme on mount
 onMounted(() => {
   themeStore.initTheme()
-  console.log('App mounted, current theme:', localStorage.getItem('theme'))
 })
 </script>
 

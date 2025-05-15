@@ -40,12 +40,7 @@ const router = useRouter()
 const route = useRoute()
 
 // Props and emits
-const props = defineProps({
-  collapsed: {
-    type: Boolean,
-    default: false
-  }
-})
+const { collapsed } = defineProps<{ collapsed: boolean }>()
 const emit = defineEmits(['update:collapsed'])
 
 // Menu

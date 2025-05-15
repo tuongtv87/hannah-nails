@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import { darkTheme, lightTheme } from 'naive-ui'
+import { darkTheme } from 'naive-ui'
 
 export const useThemeStore = defineStore('theme', () => {
   const isDarkMode = ref(localStorage.getItem('theme') === 'dark')
