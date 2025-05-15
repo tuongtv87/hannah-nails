@@ -1,17 +1,50 @@
 import { defineStore } from 'pinia'
-import { darkTheme } from 'naive-ui'
-import { ref, watch } from 'vue'
+import { darkTheme, lightTheme } from 'naive-ui'
+import { ref, computed, watch } from 'vue'
+import type { GlobalThemeOverrides } from 'naive-ui'
 
 // We'll use a separate type definition file for global declarations
 export const useAppStore = defineStore('app', () => {
   // State
   const isDarkMode = ref(localStorage.getItem('theme') === 'dark')
-  const theme = ref(isDarkMode.value ? darkTheme : null)
+  const theme = ref(isDarkMode.value ? darkTheme : lightTheme)
+
+  // Theme overrides for each theme
+  const lightThemeOverrides: GlobalThemeOverrides = {
+    Layout: {
+      color: '#ffffff',
+      headerColor: '#ffffff',
+      siderColor: '#f5f5f5',
+    },
+    Menu: {
+      itemTextColor: '#333',
+      itemColorActive: '#f0f0f0',
+      itemColorActiveHover: '#e0e0e0'
+    }
+  }
+
+  const darkThemeOverrides: GlobalThemeOverrides = {
+    Layout: {
+      color: '#101014', 
+      headerColor: '#18181c',
+      siderColor: '#18181c',
+    },
+    Menu: {
+      itemTextColor: '#eee',
+      itemColorActive: '#292933',
+      itemColorActiveHover: '#303040'
+    }
+  }
+
+  // Computed theme overrides based on current theme
+  const themeOverrides = computed(() => 
+    isDarkMode.value ? darkThemeOverrides : lightThemeOverrides
+  )
 
   // Actions
   function toggleTheme() {
     isDarkMode.value = !isDarkMode.value
-    theme.value = isDarkMode.value ? darkTheme : null
+    theme.value = isDarkMode.value ? darkTheme : lightTheme
     
     const newThemeMode = isDarkMode.value ? 'dark' : 'light'
     localStorage.setItem('theme', newThemeMode)
@@ -49,13 +82,14 @@ export const useAppStore = defineStore('app', () => {
   
   // Watch for external theme changes
   watch(isDarkMode, () => {
-    theme.value = isDarkMode.value ? darkTheme : null
+    theme.value = isDarkMode.value ? darkTheme : lightTheme
     updateBodyClass()
   })
   
   return {
     isDarkMode,
     theme,
+    themeOverrides,
     toggleTheme
   }
 })

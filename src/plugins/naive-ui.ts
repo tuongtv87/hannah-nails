@@ -1,80 +1,146 @@
-import type { App } from 'vue'
+import type { App } from 'vue';
 import {
   create,
-  NButton,
-  NCard,
-  NConfigProvider,
+  NMessageProvider,
   NDialogProvider,
-  NDropdown,
+  NConfigProvider,
+  NInput,
+  NButton,
   NForm,
   NFormItem,
-  NInput,
+  NCheckboxGroup,
+  NCheckbox,
+  NIcon,
   NLayout,
+  NLayoutHeader,
   NLayoutContent,
   NLayoutFooter,
-  NLayoutHeader,
   NLayoutSider,
   NMenu,
-  NMessageProvider,
-  NSpace,
-  NSwitch,
-  NIcon,
-  NDivider,
   NBreadcrumb,
   NBreadcrumbItem,
-  NTag,
-  NAvatar,
+  NDropdown,
+  NSpace,
   NTooltip,
-  useMessage,
-  useDialog
-} from 'naive-ui'
+  NAvatar,
+  NTabs,
+  NTabPane,
+  NCard,
+  NRow,
+  NCol,
+  NDrawer,
+  NDrawerContent,
+  NDivider,
+  NSwitch,
+  NBadge,
+  NAlert,
+  NElement,
+  NTag,
+  NNotificationProvider,
+  NProgress,
+  NDatePicker,
+  NGrid,
+  NGridItem,
+  NList,
+  NListItem,
+  NThing,
+  NDataTable,
+  NPopover,
+  NPagination,
+  NSelect,
+  NRadioGroup,
+  NRadio,
+  NSteps,
+  NStep,
+  NInputGroup,
+  NResult,
+  NDescriptions,
+  NDescriptionsItem,
+  NTable,
+  NInputNumber,
+  NLoadingBarProvider,
+  NModal,
+  NUpload,
+  NTree,
+  NSpin,
+  NTimePicker,
+  NBackTop,
+  NSkeleton,
+  NCascader,
+} from 'naive-ui';
 
-// Define global types for window.$message and window.$dialog
-declare global {
-  interface Window {
-    $message: ReturnType<typeof useMessage>
-    $dialog: ReturnType<typeof useDialog>
-  }
-}
-
-// Create NaiveUI instance with components
+// https://www.naiveui.com/en-US/os-theme/docs/import-on-demand
 const naive = create({
   components: [
-    NButton,
-    NCard,
-    NConfigProvider,
+    NMessageProvider,
     NDialogProvider,
-    NDropdown,
+    NConfigProvider,
+    NInput,
+    NButton,
     NForm,
     NFormItem,
-    NInput,
+    NCheckboxGroup,
+    NCheckbox,
+    NIcon,
     NLayout,
+    NLayoutHeader,
     NLayoutContent,
     NLayoutFooter,
-    NLayoutHeader,
     NLayoutSider,
     NMenu,
-    NMessageProvider,
-    NSpace,
-    NSwitch,
-    NIcon,
-    NDivider,
     NBreadcrumb,
     NBreadcrumbItem,
-    NTag,
+    NDropdown,
+    NSpace,
+    NTooltip,
     NAvatar,
-    NTooltip
-  ]
-})
+    NTabs,
+    NTabPane,
+    NCard,
+    NRow,
+    NCol,
+    NDrawer,
+    NDrawerContent,
+    NDivider,
+    NSwitch,
+    NBadge,
+    NAlert,
+    NElement,
+    NTag,
+    NNotificationProvider,
+    NProgress,
+    NDatePicker,
+    NGrid,
+    NGridItem,
+    NList,
+    NListItem,
+    NThing,
+    NDataTable,
+    NPopover,
+    NPagination,
+    NSelect,
+    NRadioGroup,
+    NRadio,
+    NSteps,
+    NStep,
+    NInputGroup,
+    NResult,
+    NDescriptions,
+    NDescriptionsItem,
+    NTable,
+    NInputNumber,
+    NLoadingBarProvider,
+    NModal,
+    NUpload,
+    NTree,
+    NSpin,
+    NTimePicker,
+    NBackTop,
+    NSkeleton,
+    NCascader,
+  ],
+});
 
-export function setupNaiveUI(app: App) {
-  app.use(naive)
-  
-  // Setup message and dialog after app is mounted
-  app.config.globalProperties.$message = useMessage()
-  app.config.globalProperties.$dialog = useDialog()
-  
-  // Setup global message and dialog for window
-  window.$message = app.config.globalProperties.$message
-  window.$dialog = app.config.globalProperties.$dialog
-} 
+export function setupNaive(app: App<Element>) {
+  app.use(naive);
+}
