@@ -341,6 +341,9 @@ export default defineComponent({
 .customer-container {
   padding: 16px;
   height: calc(100vh - 56px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .search-bar {
@@ -350,11 +353,24 @@ export default defineComponent({
   align-items: center;
 }
 
-.table-container {
-  margin-top: 16px;
+.n-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-:deep(.n-card) {
-  height: 100%;
+.n-card-content,
+.n-card__content {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.table-container {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
 </style>

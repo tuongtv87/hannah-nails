@@ -106,8 +106,10 @@ defineExpose(tableAction);
 <style lang="less" scoped>
 .new-table-container {
   width: 100%;
-  max-height: 90vh;
-  
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
   .new-table-title {
     font-size: 16px;
     font-weight: 600;
@@ -115,11 +117,15 @@ defineExpose(tableAction);
   }
 
   :deep(.n-data-table) {
-    max-height: calc(90vh - 60px);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
   }
 
   :deep(.n-data-table-wrapper) {
-    max-height: calc(90vh - 60px);
+    flex: 1;
+    min-height: 0;
     overflow-y: auto;
   }
 }
