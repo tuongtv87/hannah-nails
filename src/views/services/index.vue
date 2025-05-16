@@ -1,12 +1,12 @@
 <template>
   <div class="services-container">
-    <n-card title="Quản lý dịch vụ" class="services-card">
+    <n-card title="Service Management" class="services-card">
       <template #header-extra>
         <n-button type="primary" @click="openAddServiceModal">
           <template #icon>
             <n-icon><AddOutline /></n-icon>
           </template>
-          Thêm dịch vụ
+          Add Service
         </n-button>
       </template>
 
@@ -14,7 +14,7 @@
       <div class="action-bar">
         <n-input
           v-model:value="searchValue"
-          placeholder="Tìm kiếm dịch vụ..."
+          placeholder="Search services..."
           clearable
           style="width: 300px"
         >
@@ -27,14 +27,14 @@
           <n-select
             v-model:value="filterCategory"
             :options="categoryOptions"
-            placeholder="Lọc theo danh mục"
+            placeholder="Filter by category"
             style="width: 180px"
           />
           <n-button @click="handleReset">
             <template #icon>
               <n-icon><RefreshOutline /></n-icon>
             </template>
-            Đặt lại
+            Reset
           </n-button>
         </n-space>
       </div>
@@ -50,7 +50,7 @@
       />
 
       <!-- Service modal -->
-      <n-modal v-model:show="showModal" preset="card" :title="modalMode === 'add' ? 'Thêm dịch vụ mới' : 'Chỉnh sửa dịch vụ'" style="width: 600px">
+      <n-modal v-model:show="showModal" preset="card" :title="modalMode === 'add' ? 'Add New Service' : 'Edit Service'" style="width: 600px">
         <n-form
           ref="formRef"
           :model="formModel"
@@ -59,17 +59,17 @@
           label-width="120px"
           require-mark-placement="right-hanging"
         >
-          <n-form-item label="Tên dịch vụ" path="name">
-            <n-input v-model:value="formModel.name" placeholder="Nhập tên dịch vụ" />
+          <n-form-item label="Service Name" path="name">
+            <n-input v-model:value="formModel.name" placeholder="Enter service name" />
           </n-form-item>
-          <n-form-item label="Danh mục" path="category">
+          <n-form-item label="Category" path="category">
             <n-select
               v-model:value="formModel.category"
               :options="categoryOptions"
-              placeholder="Chọn danh mục"
+              placeholder="Select category"
             />
           </n-form-item>
-          <n-form-item label="Giá tiền" path="price">
+          <n-form-item label="Price" path="price">
             <n-input-number
               v-model:value="formModel.price"
               :min="0"
@@ -80,35 +80,35 @@
               <template #prefix>$</template>
             </n-input-number>
           </n-form-item>
-          <n-form-item label="Thời gian" path="duration">
+          <n-form-item label="Duration" path="duration">
             <n-input-number
               v-model:value="formModel.duration"
               :min="5"
               :step="5"
               style="width: 100%"
             >
-              <template #suffix>phút</template>
+              <template #suffix>minutes</template>
             </n-input-number>
           </n-form-item>
-          <n-form-item label="Mô tả" path="description">
+          <n-form-item label="Description" path="description">
             <n-input
               v-model:value="formModel.description"
               type="textarea"
-              placeholder="Nhập mô tả về dịch vụ"
+              placeholder="Enter service description"
             />
           </n-form-item>
-          <n-form-item label="Trạng thái" path="active">
+          <n-form-item label="Status" path="active">
             <n-switch v-model:value="formModel.active">
-              <template #checked>Đang hoạt động</template>
-              <template #unchecked>Ngưng hoạt động</template>
+              <template #checked>Active</template>
+              <template #unchecked>Inactive</template>
             </n-switch>
           </n-form-item>
         </n-form>
 
         <template #footer>
           <n-space justify="end">
-            <n-button @click="showModal = false">Hủy</n-button>
-            <n-button type="primary" @click="handleSubmit">Lưu</n-button>
+            <n-button @click="showModal = false">Cancel</n-button>
+            <n-button type="primary" @click="handleSubmit">Save</n-button>
           </n-space>
         </template>
       </n-modal>
@@ -155,8 +155,8 @@ const formRef = ref<FormInst | null>(null)
 const services = ref<ServiceData[]>([
   {
     id: 1,
-    name: 'Manicure Cơ Bản',
-    description: 'Dịch vụ manicure cơ bản bao gồm cắt, giũa, đẩy da và sơn một màu.',
+    name: 'Basic Manicure',
+    description: 'Basic manicure service includes cutting, filing, cuticle care and single color polish.',
     category: 'manicure',
     price: 25,
     duration: 30,
@@ -164,8 +164,8 @@ const services = ref<ServiceData[]>([
   },
   {
     id: 2,
-    name: 'Pedicure Cơ Bản',
-    description: 'Dịch vụ pedicure cơ bản bao gồm làm sạch, cắt giũa, đẩy da và sơn móng chân.',
+    name: 'Basic Pedicure',
+    description: 'Basic pedicure service includes cleaning, cutting, filing, cuticle care and toenail polish.',
     category: 'pedicure',
     price: 35,
     duration: 45,
@@ -173,8 +173,8 @@ const services = ref<ServiceData[]>([
   },
   {
     id: 3,
-    name: 'Sơn Gel',
-    description: 'Sơn gel bền lâu với nhiều màu sắc để lựa chọn, giữ từ 2-3 tuần.',
+    name: 'Gel Polish',
+    description: 'Long-lasting gel polish with many colors to choose from, lasts 2-3 weeks.',
     category: 'polish',
     price: 30,
     duration: 45,
@@ -182,8 +182,8 @@ const services = ref<ServiceData[]>([
   },
   {
     id: 4,
-    name: 'Nail Art Đơn Giản',
-    description: 'Trang trí móng đơn giản với các họa tiết nhỏ, kim tuyến hoặc dán đá.',
+    name: 'Simple Nail Art',
+    description: 'Simple nail decorations with small patterns, glitter or rhinestones.',
     category: 'art',
     price: 15,
     duration: 20,
@@ -191,8 +191,8 @@ const services = ref<ServiceData[]>([
   },
   {
     id: 5,
-    name: 'Đắp Bột Acrylic',
-    description: 'Đắp bột acrylic để tạo độ dài và bảo vệ móng tự nhiên.',
+    name: 'Acrylic Overlay',
+    description: 'Acrylic overlay to add length and protect natural nails.',
     category: 'extension',
     price: 50,
     duration: 90,
@@ -200,8 +200,8 @@ const services = ref<ServiceData[]>([
   },
   {
     id: 6,
-    name: 'Đắp Gel',
-    description: 'Đắp gel UV để tạo độ dài và bảo vệ móng tự nhiên, bền hơn acrylic.',
+    name: 'Gel Extension',
+    description: 'UV gel extension to add length and protect natural nails, more durable than acrylic.',
     category: 'extension',
     price: 55,
     duration: 90,
@@ -209,8 +209,8 @@ const services = ref<ServiceData[]>([
   },
   {
     id: 7,
-    name: 'Vẽ Móng Nghệ Thuật',
-    description: 'Vẽ móng nghệ thuật phức tạp với các họa tiết theo yêu cầu.',
+    name: 'Artistic Nail Design',
+    description: 'Complex artistic nail designs with custom patterns.',
     category: 'art',
     price: 45,
     duration: 60,
@@ -218,8 +218,8 @@ const services = ref<ServiceData[]>([
   },
   {
     id: 8,
-    name: 'Tẩy Gel/Acrylic',
-    description: 'Tẩy bỏ gel hoặc acrylic an toàn không làm hư hại móng.',
+    name: 'Gel/Acrylic Removal',
+    description: 'Safe removal of gel or acrylic without damaging natural nails.',
     category: 'removal',
     price: 20,
     duration: 30,
@@ -229,13 +229,13 @@ const services = ref<ServiceData[]>([
 
 // Category options
 const categoryOptions = [
-  { label: 'Tất cả', value: null },
+  { label: 'All', value: null },
   { label: 'Manicure', value: 'manicure' },
   { label: 'Pedicure', value: 'pedicure' },
-  { label: 'Sơn Gel/Sơn Thường', value: 'polish' },
+  { label: 'Gel/Regular Polish', value: 'polish' },
   { label: 'Nail Art', value: 'art' },
-  { label: 'Đắp Móng', value: 'extension' },
-  { label: 'Tẩy Móng', value: 'removal' }
+  { label: 'Extensions', value: 'extension' },
+  { label: 'Removal', value: 'removal' }
 ]
 
 // Form model
@@ -252,24 +252,24 @@ const formModel = reactive<ServiceFormData>({
 const rules = {
   name: {
     required: true,
-    message: 'Vui lòng nhập tên dịch vụ',
+    message: 'Please enter service name',
     trigger: 'blur'
   },
   category: {
     required: true,
-    message: 'Vui lòng chọn danh mục',
+    message: 'Please select a category',
     trigger: 'change'
   },
   price: {
     required: true,
     type: 'number',
-    message: 'Vui lòng nhập giá tiền',
+    message: 'Please enter price',
     trigger: ['blur', 'change']
   },
   duration: {
     required: true,
     type: 'number',
-    message: 'Vui lòng nhập thời gian',
+    message: 'Please enter duration',
     trigger: ['blur', 'change']
   }
 }
@@ -281,18 +281,18 @@ const formatCurrency = (amount: number) => {
 
 // Format duration
 const formatDuration = (minutes: number) => {
-  return `${minutes} phút`
+  return `${minutes} minutes`
 }
 
 // Table columns
 const columns = computed<DataTableColumns<ServiceData>>(() => [
   {
-    title: 'Tên dịch vụ',
+    title: 'Service Name',
     key: 'name',
     sorter: 'default'
   },
   {
-    title: 'Danh mục',
+    title: 'Category',
     key: 'category',
     render(row) {
       const category = categoryOptions.find(cat => cat.value === row.category)
@@ -301,7 +301,7 @@ const columns = computed<DataTableColumns<ServiceData>>(() => [
     sorter: 'default'
   },
   {
-    title: 'Giá tiền',
+    title: 'Price',
     key: 'price',
     render(row) {
       return formatCurrency(row.price)
@@ -309,7 +309,7 @@ const columns = computed<DataTableColumns<ServiceData>>(() => [
     sorter: (a, b) => a.price - b.price
   },
   {
-    title: 'Thời gian',
+    title: 'Duration',
     key: 'duration',
     render(row) {
       return formatDuration(row.duration)
@@ -317,7 +317,7 @@ const columns = computed<DataTableColumns<ServiceData>>(() => [
     sorter: (a, b) => a.duration - b.duration
   },
   {
-    title: 'Trạng thái',
+    title: 'Status',
     key: 'active',
     render(row) {
       return h(
@@ -342,7 +342,7 @@ const columns = computed<DataTableColumns<ServiceData>>(() => [
                 }
               }
             ),
-            row.active ? 'Đang hoạt động' : 'Ngưng hoạt động'
+            row.active ? 'Active' : 'Inactive'
           ]
         }
       )
@@ -350,7 +350,7 @@ const columns = computed<DataTableColumns<ServiceData>>(() => [
     sorter: (a, b) => (a.active === b.active ? 0 : a.active ? -1 : 1)
   },
   {
-    title: 'Thao tác',
+    title: 'Actions',
     key: 'actions',
     render(row) {
       return h(
@@ -378,7 +378,7 @@ const columns = computed<DataTableColumns<ServiceData>>(() => [
                   { size: 18 },
                   { default: () => h(CreateOutline) }
                 ),
-                ' Sửa'
+                ' Edit'
               ]
             ),
             h(
@@ -396,7 +396,7 @@ const columns = computed<DataTableColumns<ServiceData>>(() => [
                   { size: 18 },
                   { default: () => h(TrashOutline) }
                 ),
-                ' Xóa'
+                ' Delete'
               ]
             )
           ]
@@ -481,7 +481,7 @@ const handleEdit = (row: ServiceData) => {
 // Delete service
 const handleDelete = (row: ServiceData) => {
   services.value = services.value.filter(item => item.id !== row.id)
-  message.success('Đã xóa dịch vụ thành công')
+  message.success('Service deleted successfully')
 }
 
 // Submit form
@@ -506,7 +506,7 @@ const handleSubmit = (e: MouseEvent) => {
               active: formModel.active
             }
           }
-          message.success('Cập nhật dịch vụ thành công')
+          message.success('Service updated successfully')
         } else {
           // Add new service
           const newService: ServiceData = {
@@ -519,7 +519,7 @@ const handleSubmit = (e: MouseEvent) => {
             active: formModel.active
           }
           services.value.push(newService)
-          message.success('Thêm dịch vụ thành công')
+          message.success('Service added successfully')
         }
         showModal.value = false
         loading.value = false
@@ -544,4 +544,4 @@ const handleSubmit = (e: MouseEvent) => {
   margin-bottom: 24px;
   align-items: center;
 }
-</style> 
+</style>

@@ -5,6 +5,9 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
-    "types": ["vue-router"]
+    "types": ["vue-router"],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   }
 }

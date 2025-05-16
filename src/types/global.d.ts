@@ -7,8 +7,8 @@ declare global {
   }
 }
 
-declare type Recordable<T = any> = Record<string, T>;
-declare type Nullable<T> = T | null;
+export type Recordable<T = any> = Record<string, T>;
+export type Nullable<T> = T | null;
 declare type ReadonlyRecordable<T = any> = {
   readonly [key: string]: T;
 };

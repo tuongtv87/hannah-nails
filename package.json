@@ -24,8 +24,12 @@
     "@vueuse/core": "^10.11.1",
     "alova": "^3.2.10",
     "axios": "^1.9.0",
+    "date-fns": "^4.1.0",
+    "dayjs": "^1.11.13",
     "echarts": "^5.6.0",
     "less": "^4.3.0",
+    "lodash-es": "^4.17.21",
+    "mockjs": "^1.1.0",
     "naive-ui": "^2.41.0",
     "pinia": "^3.0.2",
     "pinia-plugin-persistedstate": "^4.2.0",
@@ -37,6 +41,7 @@
     "vuedraggable": "^2.24.3"
   },
   "devDependencies": {
+    "@faker-js/faker": "^9.8.0",
     "@vitejs/plugin-vue": "^5.2.3",
     "@vue/tsconfig": "^0.7.0",
     "concurrently": "^9.1.2",
