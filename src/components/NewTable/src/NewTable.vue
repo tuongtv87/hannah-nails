@@ -4,25 +4,23 @@
     <div v-if="title" class="new-table-title">{{ title }}</div>
     
     <!-- Bảng dữ liệu -->
-    <div class="new-table-content" ref="tableWrapRef">
-      <n-data-table
-        ref="tableRef"
-        v-bind="getBindValues"
-        :loading="loading"
-        :pagination="paginationConfig"
-        @update:page="onPageChange"
-        @update:page-size="onPageSizeChange"
-      >
-        <template #[item]="data" v-for="item in Object.keys($slots)" :key="item">
-          <slot :name="item" v-bind="data"></slot>
-        </template>
-      </n-data-table>
-    </div>
+    <n-data-table
+      ref="tableRef"
+      v-bind="getBindValues"
+      :loading="loading"
+      :pagination="paginationConfig"
+      @update:page="onPageChange"
+      @update:page-size="onPageSizeChange"
+    >
+      <template #[item]="data" v-for="item in Object.keys($slots)" :key="item">
+        <slot :name="item" v-bind="data"></slot>
+      </template>
+    </n-data-table>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, unref, onMounted, nextTick, toRaw, watch, onUpdated } from 'vue';
+import { ref, computed, unref, onMounted, nextTick } from 'vue';
 import { usePagination } from './hooks/usePagination';
 import { useTableData } from './hooks/useTableData';
 import type { NewTableProps } from './types/table';
@@ -31,18 +29,15 @@ import type { NewTableProps } from './types/table';
 const props = defineProps<NewTableProps>();
 
 // Events
-const emit = defineEmits(['page-change', 'page-size-change', 'fetch-success', 'fetch-error']);
+const emit = defineEmits(['update:page', 'update:page-size', 'fetch-success', 'fetch-error']);
 
 // Tham chiếu đến bảng
 const tableRef = ref<any>(null);
-// Tham chiếu đến vùng chứa bảng
-const tableWrapRef = ref<HTMLElement | null>(null);
 
 // Xử lý phân trang
 const { 
   getPaginationInfo, 
-  setPagination, 
-  showPagination 
+  setPagination
 } = usePagination(props);
 
 // Xử lý dữ liệu bảng
@@ -79,14 +74,14 @@ const getBindValues = computed(() => {
 // Sự kiện khi thay đổi trang
 function onPageChange(page: number) {
   setPagination({ page });
-  emit('page-change', page);
+  emit('update:page', page);
   reload({ page });
 }
 
 // Sự kiện khi thay đổi kích thước trang
 function onPageSizeChange(pageSize: number) {
   setPagination({ page: 1, pageSize });
-  emit('page-size-change', pageSize);
+  emit('update:page-size', pageSize);
   reload({ page: 1, pageSize });
 }
 
@@ -111,32 +106,21 @@ defineExpose(tableAction);
 <style lang="less" scoped>
 .new-table-container {
   width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  max-height: 90vh;
   
   .new-table-title {
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 16px;
   }
-  
-  .new-table-content {
-    position: relative;
-    width: 100%;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
 
-    :deep(.n-data-table) {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
+  :deep(.n-data-table) {
+    max-height: calc(90vh - 60px);
+  }
 
-    :deep(.n-data-table-wrapper) {
-      flex: 1;
-    }
+  :deep(.n-data-table-wrapper) {
+    max-height: calc(90vh - 60px);
+    overflow-y: auto;
   }
 }
 </style> 

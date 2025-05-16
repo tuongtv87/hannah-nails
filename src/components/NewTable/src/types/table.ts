@@ -18,7 +18,7 @@ export interface BasicColumn {
 export interface NewTableProps {
   title?: string;
   columns: BasicColumn[];
-  dataSource?: Function | any[];
+  data?: any[];
   pagination?: boolean | PaginationProps;
   maxHeight?: number;
   rowKey?: string | ((record: any) => string);

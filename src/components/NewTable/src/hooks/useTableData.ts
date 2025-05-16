@@ -1,11 +1,10 @@
 import type { PaginationProps } from '../types/pagination';
 import type { NewTableProps } from '../types/table';
-import { ref, unref, computed, watchEffect } from 'vue';
-import { API_SETTING } from '../constant';
+import { ref, computed, watchEffect } from 'vue';
 
 export function useTableData(
   props: NewTableProps,
-  { getPaginationInfo, setPagination }: { 
+  _context: { 
     getPaginationInfo: () => PaginationProps | boolean, 
     setPagination: (info: Partial<PaginationProps>) => void 
   }
@@ -15,10 +14,10 @@ export function useTableData(
   // Trạng thái loading
   const loading = ref(false);
 
-  // Theo dõi dataSource và cập nhật tableData
+  // Theo dõi data và cập nhật tableData
   watchEffect(() => {
-    if (Array.isArray(props.dataSource)) {
-      tableData.value = props.dataSource;
+    if (Array.isArray(props.data)) {
+      tableData.value = props.data;
     }
   });
 
@@ -34,77 +33,22 @@ export function useTableData(
     return (record: any) => record.id;
   });
 
-  // Fetch dữ liệu từ API
-  async function fetchData(params?: any) {
-    // Nếu dataSource là function, gọi API để lấy dữ liệu
-    if (typeof props.dataSource === 'function') {
-      try {
-        loading.value = true;
-        
-        // Chuẩn bị tham số phân trang
-        const pageField = API_SETTING.pageField;
-        const sizeField = API_SETTING.sizeField;
-        const totalField = API_SETTING.totalField;
-        const listField = API_SETTING.listField;
-        const countField = API_SETTING.countField;
-        
-        let pageParams = {};
-        const paginationInfo = getPaginationInfo();
-        
-        if (typeof paginationInfo === 'object') {
-          const { page = 1, pageSize = 10 } = paginationInfo;
-          pageParams = {
-            [pageField]: (params && params[pageField]) || page,
-            [sizeField]: pageSize,
-          };
-        }
-        
-        // Gọi API với tham số
-        const apiParams = {
-          ...pageParams,
-          ...params,
-        };
-        
-        const res = await props.dataSource(apiParams);
-        
-        // Xử lý kết quả API
-        const total = res[countField] || 0;
-        const currentPage = res[pageField] || 1;
-        const totalPages = res[totalField] || 1;
-        const results = res[listField] || [];
-        
-        // Cập nhật dữ liệu bảng
-        tableData.value = results;
-        
-        // Cập nhật thông tin phân trang
-        setPagination({
-          page: currentPage,
-          pageCount: totalPages,
-          itemCount: total,
-        });
-        
-        return {
-          items: results,
-          total,
-          currentPage,
-          totalPages,
-        };
-      } catch (error) {
-        console.error('Failed to fetch table data:', error);
-        tableData.value = [];
-        setPagination({
-          pageCount: 0,
-          itemCount: 0,
-        });
-        return {
-          items: [],
-          total: 0,
-          currentPage: 1,
-          totalPages: 0,
-        };
-      } finally {
-        loading.value = false;
+  // Fetch dữ liệu
+  async function fetchData(_params?: any) {
+    try {
+      if (Array.isArray(props.data)) {
+        setTableData(props.data);
+        return { items: props.data, total: props.data.length };
       }
+    } catch (error) {
+      console.error('Failed to fetch table data:', error);
+      tableData.value = [];
+      return {
+        items: [],
+        total: 0,
+      };
+    } finally {
+      loading.value = false;
     }
     return null;
   }

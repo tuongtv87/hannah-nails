@@ -35,7 +35,7 @@
         <NewTable
           ref="tableRef"
           :columns="columns"
-          :dataSource="displayData"
+          :data="displayData"
           :pagination="{ 
             page: pagination.page,
             pageSize: pagination.pageSize,
@@ -44,8 +44,8 @@
             showSizePicker: true,
             showQuickJumper: true
           }"
-          @page-change="handlePageChange"
-          @page-size-change="handlePageSizeChange"
+          @update:page="handlePageChange"
+          @update:page-size="handlePageSizeChange"
         />
       </div>
     </n-card>
@@ -340,10 +340,7 @@ export default defineComponent({
 <style scoped>
 .customer-container {
   padding: 16px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+  height: calc(100vh - 56px);
 }
 
 .search-bar {
@@ -354,40 +351,10 @@ export default defineComponent({
 }
 
 .table-container {
-  flex: 1;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  flex-direction: column;
+  margin-top: 16px;
 }
 
 :deep(.n-card) {
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-:deep(.n-card-content) {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-:deep(.n-card__content) {
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-:deep(.n-data-table) {
-  flex: 1;
-  max-height: 100%;
-}
-
-:deep(.n-data-table-wrapper) {
-  max-height: 100%;
 }
 </style>
