@@ -1,27 +1,22 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
-import { NSpace, NCard, NAvatar, NTag, NButton, NDatePicker } from 'naive-ui'
+import { NSpace, NCard, NAvatar, NTag, NDatePicker } from 'naive-ui'
 import BookingCard from './components/bookingCard.vue'
-import StaffDisplay from './components/StaffDisplay.vue'
-import WorkingScheduleDisplay from './components/WorkingScheduleDisplay.vue'
-import { STAFFS, WEEKDAYS, WORK_SCHEDULE } from '@/constants'
-import { format, addDays, isSameDay } from 'date-fns'
+import { STAFFS, WORK_SCHEDULE } from '@/constants'
+import { format } from 'date-fns'
 
 // Import từ các file TS đã tách
-import type { Booking, Staff } from './types'
+import type { Booking } from './types'
 import { 
   updateWorkingScheduleForDate, 
   generateTimeSlots, 
   WEEKDAY_LABELS, 
   getFormattedDate,
   calculateTimeBlocks as calculateTimeBlocksUtil,
-  formatTimeRange as formatTimeRangeUtil,
-  calculateDuration as calculateDurationUtil
 } from './timeUtils'
 import { 
   getBookingsForStaff, 
-  prepareBookingCardData,
-  updateBookingStatus
+  prepareBookingCardData
 } from './bookingUtils'
 import { generateBookings } from './dataGenerator'
 
@@ -140,89 +135,95 @@ function handleEdit(booking: Booking) {
 </script>
 
 <template>  
-  <NSpace vertical size="large">
-    <n-card>
-      <div style="display: flex; align-items: center; gap: 16px;">
-        <n-date-picker v-model:value="datePickerValue" type="date" @update:value="onDateChange" style="width: 200px;" />
-        <span style="font-weight: bold;">
-          {{ selectedWeekdayLabel }} - {{ selectedDateStr }} - {{ isOpen ? workingHours : 'Closed' }}
-        </span>
-      </div>
-    </n-card>    
-    <n-card v-if="isOpen && timeSlots.length > 0">      
-      <div class="schedule-grid" 
-        :style="{
-          gridTemplateColumns: `70px repeat(${STAFFS.length}, 1fr)`,
-          gridTemplateRows: `auto repeat(${timeSlots.length}, 36px)`
-        }"
-      >
-        <!-- Header -->
-        <div class="time-header"></div>
-        <div v-for="staff in STAFFS" :key="staff.id" class="staff-header">
-          <div class="staff-info">
-            <n-avatar 
-              round 
-              :size="36" 
-              :src="staff.avatar" 
-              fallback-src="https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg"
-              class="staff-avatar"
-            />
-            <div class="staff-name">{{ staff.title }}</div>
-          </div>
-          <div class="staff-position">{{ staff.position }}</div>
-          <div class="staff-status">
-            <n-tag size="small" :type="staff.status === 'available' ? 'success' : staff.status === 'busy' ? 'warning' : 'error'">
-              {{ staff.status === 'available' ? 'Available' : staff.status === 'busy' ? 'Busy' : 'Off' }}
-            </n-tag>
-          </div>
+  <div class="booking-page">
+    <n-space vertical size="large">
+      <n-card>
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <n-date-picker v-model:value="datePickerValue" type="date" @update:value="onDateChange" style="width: 200px;" />
+          <span style="font-weight: bold;">
+            {{ selectedWeekdayLabel }} - {{ selectedDateStr }} - {{ isOpen ? workingHours : 'Closed' }}
+          </span>
         </div>
-
-        <!-- Time rows -->
-        <template v-for="(time, index) in timeSlots" :key="time">
-          <!-- Time label -->
-          <div class="time-label" :style="`grid-row: ${index + 2}`">
-            {{ time }}
-          </div>
-          <!-- Empty booking cells for grid structure -->
-          <div
-            v-for="staff in STAFFS"
-            :key="staff.id + time"
-            class="booking-cell"
-            :style="`grid-row: ${index + 2}; grid-column: ${STAFFS.findIndex(s => s.id === staff.id) + 2}`"
-          ></div>
-        </template>
-        
-        <!-- Actual bookings positioned absolutely within the grid -->
-        <template v-for="staff in STAFFS" :key="`bookings-${staff.id}`">
-          <template v-for="booking in getBookingsForStaff(bookings, staff.id)" :key="booking.id">
-            <div class="booking-container"
-              :style="{
-                gridRow: `${calculateGridRow(new Date(booking.start).getHours() + ':' + new Date(booking.start).getMinutes())} / span ${calculateTimeBlocks(booking.start, booking.end)}`,
-                gridColumn: `${STAFFS.findIndex(s => s.id === staff.id) + 2}`,
-              }"
-            >
-              <booking-card
-                :card="prepareBookingCardData(booking)"
-                @view-detail="handleViewDetail"
-                @edit="handleEdit"
-                @status-change="handleStatusChange"
+      </n-card>    
+      <n-card v-if="isOpen && timeSlots.length > 0">      
+        <div class="schedule-grid" 
+          :style="{
+            gridTemplateColumns: `70px repeat(${STAFFS.length}, 1fr)`,
+            gridTemplateRows: `auto repeat(${timeSlots.length}, 36px)`
+          }"
+        >
+          <!-- Header -->
+          <div class="time-header"></div>
+          <div v-for="staff in STAFFS" :key="staff.id" class="staff-header">
+            <div class="staff-info">
+              <n-avatar 
+                round 
+                :size="36" 
+                :src="staff.avatar" 
+                fallback-src="https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg"
+                class="staff-avatar"
               />
+              <div class="staff-name">{{ staff.title }}</div>
             </div>
+            <div class="staff-position">{{ staff.position }}</div>
+            <div class="staff-status">
+              <n-tag size="small" :type="staff.status === 'available' ? 'success' : staff.status === 'busy' ? 'warning' : 'error'">
+                {{ staff.status === 'available' ? 'Available' : staff.status === 'busy' ? 'Busy' : 'Off' }}
+              </n-tag>
+            </div>
+          </div>
+
+          <!-- Time rows -->
+          <template v-for="(time, index) in timeSlots" :key="time">
+            <!-- Time label -->
+            <div class="time-label" :style="`grid-row: ${index + 2}`">
+              {{ time }}
+            </div>
+            <!-- Empty booking cells for grid structure -->
+            <div
+              v-for="staff in STAFFS"
+              :key="staff.id + time"
+              class="booking-cell"
+              :style="`grid-row: ${index + 2}; grid-column: ${STAFFS.findIndex(s => s.id === staff.id) + 2}`"
+            ></div>
           </template>
-        </template>
-      </div>
-    </n-card>
-    
-    <n-card v-else>
-      <div class="text-center py-8">
-        <h3>No schedule available for today</h3>
-        <p>The salon is closed today or there's no schedule information available.</p>
-      </div>
-    </n-card>
-  </NSpace>
+          
+          <!-- Actual bookings positioned absolutely within the grid -->
+          <template v-for="staff in STAFFS" :key="`bookings-${staff.id}`">
+            <template v-for="booking in getBookingsForStaff(bookings, staff.id)" :key="booking.id">
+              <div class="booking-container"
+                :style="{
+                  gridRow: `${calculateGridRow(new Date(booking.start).getHours() + ':' + new Date(booking.start).getMinutes())} / span ${calculateTimeBlocks(booking.start, booking.end)}`,
+                  gridColumn: `${STAFFS.findIndex(s => s.id === staff.id) + 2}`,
+                }"
+              >
+                <booking-card
+                  :card="prepareBookingCardData(booking)"
+                  @view-detail="handleViewDetail"
+                  @edit="handleEdit"
+                  @status-change="handleStatusChange"
+                />
+              </div>
+            </template>
+          </template>
+        </div>
+      </n-card>
+      
+      <n-card v-else>
+        <div class="text-center py-8">
+          <h3>No schedule available for today</h3>
+          <p>The salon is closed today or there's no schedule information available.</p>
+        </div>
+      </n-card>
+    </n-space>
+  </div>
 </template>
 
 <style scoped>
+.booking-page {
+  padding: 16px;
+}
+
 h2, h3 {
   margin: 0;
 }
@@ -230,7 +231,6 @@ h2, h3 {
 .schedule-grid {
   display: grid;
   gap: 8px 12px;
-  overflow-x: auto;
   position: relative;
 }
 
@@ -312,5 +312,32 @@ h2, h3 {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+:deep(.n-card) {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+:deep(.n-card-content) {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+:deep(.n-card__content) {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px;
+}
+
+:deep(.n-space) {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="booking-page">
+  <div class="staff-page">
     <n-space vertical size="large">
       <!-- Staff Cards Section -->
       <n-card title="Staff List" class="staff-list-container">
@@ -41,8 +41,8 @@ const handleSelectStaff = (staff) => {
 </script>
 
 <style>
-.booking-page {
-  padding: 20px;
+.staff-page {
+  padding: 16px;
 }
 
 .staff-list-container {
