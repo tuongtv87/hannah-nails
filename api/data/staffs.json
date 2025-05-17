@@ -1,0 +1,272 @@
+[
+  {
+    "name": "Anna Nguyen",
+    "position": "Nail Technician",
+    "email": "anna.nguyen@nail-salon.com",
+    "phone": "0901234567",
+    "wagesPerHour": 150000,
+    "avatar": "https://randomuser.me/api/portraits/women/1.jpg",
+    "status": "available",
+    "skills": ["Nail Art", "Gel Polish", "Acrylic Extension"],
+    "workingHours": [
+      {
+        "day": "mon",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "tue",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "wed",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "thu",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "fri",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "sat",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "sun",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      }
+    ]
+  },
+  {
+    "name": "Michael Tran",
+    "position": "Senior Nail Technician",
+    "email": "michael.tran@nail-salon.com",
+    "phone": "0912345678",
+    "wagesPerHour": 200000,
+    "avatar": "https://randomuser.me/api/portraits/men/2.jpg",
+    "status": "available",
+    "skills": ["Nail Art", "Gel Polish", "3D Designs", "Nail Repair", "Pedicure"],
+    "workingHours": [
+      {
+        "day": "mon",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "tue",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "wed",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "thu",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "fri",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "sat",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "sun",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      }
+    ]
+  },
+  {
+    "name": "Jenny Le",
+    "position": "Nail Artist",
+    "email": "jenny.le@nail-salon.com",
+    "phone": "0923456789",
+    "wagesPerHour": 180000,
+    "avatar": "https://randomuser.me/api/portraits/women/3.jpg",
+    "status": "busy",
+    "skills": ["Hand-painted Designs", "Rhinestone Application", "Gel Art", "Airbrush"],
+    "workingHours": [
+      {
+        "day": "mon",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "tue",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "wed",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "thu",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "fri",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "sat",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "sun",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      }
+    ]
+  },
+  {
+    "name": "Tommy Pham",
+    "position": "Manager & Technician",
+    "email": "tommy.pham@nail-salon.com",
+    "phone": "0934567890",
+    "wagesPerHour": 250000,
+    "avatar": "https://randomuser.me/api/portraits/men/4.jpg",
+    "status": "available",
+    "skills": ["Management", "Nail Art", "Customer Relations", "Training", "Gel Polish"],
+    "workingHours": [
+      {
+        "day": "mon",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "tue",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "wed",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "thu",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "fri",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "sat",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "sun",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      }
+    ]
+  },
+  {
+    "name": "May Hoang",
+    "position": "Junior Nail Technician",
+    "email": "may.hoang@nail-salon.com",
+    "phone": "0945678901",
+    "wagesPerHour": 120000,
+    "avatar": "https://randomuser.me/api/portraits/women/5.jpg",
+    "status": "off",
+    "skills": ["Basic Manicure", "Pedicure", "Gel Polish"],
+    "workingHours": [
+      {
+        "day": "mon",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "tue",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "wed",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "thu",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "fri",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "sat",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      },
+      {
+        "day": "sun",
+        "startTime": "09:00",
+        "endTime": "19:00",
+        "isWorkingDay": true
+      }
+    ]
+  }
+] 

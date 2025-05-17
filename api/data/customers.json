@@ -1,0 +1,222 @@
+[
+  {
+    "name": "Nguyễn Thị Linh",
+    "email": "linh.nguyen@example.com",
+    "phone": "0912345678",
+    "avatar": "https://randomuser.me/api/portraits/women/1.jpg",
+    "address": "123 Lê Lợi, Quận 1, TP. HCM",
+    "notes": "Khách hàng thường xuyên",
+    "lastVisit": "2025-04-01",
+    "totalVisits": 5,
+    "totalSpent": 2500000
+  },
+  {
+    "name": "Trần Văn Nam",
+    "email": "nam.tran@example.com",
+    "phone": "0923456789",
+    "avatar": "https://randomuser.me/api/portraits/men/2.jpg",
+    "address": "45 Nguyễn Huệ, Quận 1, TP. HCM",
+    "notes": "Thích dịch vụ massage",
+    "lastVisit": "2025-03-25",
+    "totalVisits": 3,
+    "totalSpent": 1800000
+  },
+  {
+    "name": "Phạm Thị Hương",
+    "email": "huong.pham@example.com",
+    "phone": "0934567890",
+    "avatar": "https://randomuser.me/api/portraits/women/3.jpg",
+    "address": "67 Lê Duẩn, Quận 3, TP. HCM",
+    "notes": "Ưu tiên dịch vụ nhanh",
+    "lastVisit": "2025-04-10",
+    "totalVisits": 8,
+    "totalSpent": 4200000
+  },
+  {
+    "name": "Lê Minh Tuấn",
+    "email": "tuan.le@example.com",
+    "phone": "0945678901",
+    "avatar": "https://randomuser.me/api/portraits/men/4.jpg",
+    "address": "89 Trần Hưng Đạo, Quận 5, TP. HCM",
+    "notes": "Đặt lịch thường xuyên vào cuối tuần",
+    "lastVisit": "2025-03-28",
+    "totalVisits": 6,
+    "totalSpent": 3500000
+  },
+  {
+    "name": "Hoàng Thị Lan",
+    "email": "lan.hoang@example.com",
+    "phone": "0956789012",
+    "avatar": "https://randomuser.me/api/portraits/women/5.jpg",
+    "address": "102 Nguyễn Đình Chiểu, Quận 3, TP. HCM",
+    "notes": "Thích dịch vụ chăm sóc da",
+    "lastVisit": "2025-04-05",
+    "totalVisits": 4,
+    "totalSpent": 2900000
+  },
+  {
+    "name": "Vũ Đình Long",
+    "email": "long.vu@example.com",
+    "phone": "0967890123",
+    "avatar": "https://randomuser.me/api/portraits/men/6.jpg",
+    "address": "34 Trần Phú, Quận 7, TP. HCM",
+    "notes": "Khách VIP",
+    "lastVisit": "2025-04-08",
+    "totalVisits": 12,
+    "totalSpent": 8500000
+  },
+  {
+    "name": "Đặng Thu Thảo",
+    "email": "thao.dang@example.com",
+    "phone": "0978901234",
+    "avatar": "https://randomuser.me/api/portraits/women/7.jpg",
+    "address": "78 Võ Văn Tần, Quận 3, TP. HCM",
+    "notes": "Thích trò chuyện",
+    "lastVisit": "2025-03-30",
+    "totalVisits": 2,
+    "totalSpent": 1200000
+  },
+  {
+    "name": "Ngô Quang Hải",
+    "email": "hai.ngo@example.com",
+    "phone": "0989012345",
+    "avatar": "https://randomuser.me/api/portraits/men/8.jpg",
+    "address": "56 Lý Tự Trọng, Quận 1, TP. HCM",
+    "notes": "Hay đổi lịch đột xuất",
+    "lastVisit": "2025-03-15",
+    "totalVisits": 3,
+    "totalSpent": 1700000
+  },
+  {
+    "name": "Trịnh Mai Anh",
+    "email": "anh.trinh@example.com",
+    "phone": "0990123456",
+    "avatar": "https://randomuser.me/api/portraits/women/9.jpg",
+    "address": "23 Nguyễn Cư Trinh, Quận 1, TP. HCM",
+    "notes": "Thích dịch vụ cắt tóc",
+    "lastVisit": "2025-04-12",
+    "totalVisits": 7,
+    "totalSpent": 3800000
+  },
+  {
+    "name": "Bùi Quốc Việt",
+    "email": "viet.bui@example.com",
+    "phone": "0901234567",
+    "avatar": "https://randomuser.me/api/portraits/men/10.jpg",
+    "address": "91 Phạm Ngọc Thạch, Quận 1, TP. HCM",
+    "notes": "Yêu cầu nhân viên có kinh nghiệm",
+    "lastVisit": "2025-03-20",
+    "totalVisits": 4,
+    "totalSpent": 2200000
+  },
+  {
+    "name": "Đinh Hương Giang",
+    "email": "giang.dinh@example.com",
+    "phone": "0912345098",
+    "avatar": "https://randomuser.me/api/portraits/women/11.jpg",
+    "address": "67 Hai Bà Trưng, Quận 1, TP. HCM",
+    "notes": "Khách hàng mới",
+    "lastVisit": "2025-04-15",
+    "totalVisits": 1,
+    "totalSpent": 800000
+  },
+  {
+    "name": "Phùng Thanh Độ",
+    "email": "do.phung@example.com",
+    "phone": "0923450987",
+    "avatar": "https://randomuser.me/api/portraits/men/12.jpg",
+    "address": "45 Lê Thánh Tôn, Quận 1, TP. HCM",
+    "notes": "Thích dịch vụ nhanh gọn",
+    "lastVisit": "2025-04-02",
+    "totalVisits": 2,
+    "totalSpent": 1500000
+  },
+  {
+    "name": "Dương Mỹ Linh",
+    "email": "linh.duong@example.com",
+    "phone": "0934509876",
+    "avatar": "https://randomuser.me/api/portraits/women/13.jpg",
+    "address": "32 Trần Quang Khải, Quận 1, TP. HCM",
+    "notes": "Thường đi cùng bạn",
+    "lastVisit": "2025-03-28",
+    "totalVisits": 5,
+    "totalSpent": 2700000
+  },
+  {
+    "name": "Hà Việt Hoàng",
+    "email": "hoang.ha@example.com",
+    "phone": "0945098765",
+    "avatar": "https://randomuser.me/api/portraits/men/14.jpg",
+    "address": "89 Điện Biên Phủ, Quận 1, TP. HCM",
+    "notes": "Khách hàng thân thiết",
+    "lastVisit": "2025-04-10",
+    "totalVisits": 8,
+    "totalSpent": 5200000
+  },
+  {
+    "name": "Lý Thanh Thảo",
+    "email": "thao.ly@example.com",
+    "phone": "0956098754",
+    "avatar": "https://randomuser.me/api/portraits/women/15.jpg",
+    "address": "102 Nam Kỳ Khởi Nghĩa, Quận 1, TP. HCM",
+    "notes": "Thích dịch vụ làm móng",
+    "lastVisit": "2025-04-05",
+    "totalVisits": 6,
+    "totalSpent": 3200000
+  },
+  {
+    "name": "Châu Đình Khoa",
+    "email": "khoa.chau@example.com",
+    "phone": "0967098543",
+    "avatar": "https://randomuser.me/api/portraits/men/16.jpg",
+    "address": "25 Lê Văn Sỹ, Quận 3, TP. HCM",
+    "notes": "Đặt lịch cho cả gia đình",
+    "lastVisit": "2025-03-22",
+    "totalVisits": 7,
+    "totalSpent": 4800000
+  },
+  {
+    "name": "Mai Phương Thúy",
+    "email": "thuy.mai@example.com",
+    "phone": "0978095432",
+    "avatar": "https://randomuser.me/api/portraits/women/17.jpg",
+    "address": "78 Cách Mạng Tháng 8, Quận 3, TP. HCM",
+    "notes": "Thích dịch vụ tẩy trang",
+    "lastVisit": "2025-04-01",
+    "totalVisits": 3,
+    "totalSpent": 1800000
+  },
+  {
+    "name": "Cao Xuân Tài",
+    "email": "tai.cao@example.com",
+    "phone": "0989054321",
+    "avatar": "https://randomuser.me/api/portraits/men/18.jpg",
+    "address": "56 Nguyễn Thị Minh Khai, Quận 1, TP. HCM",
+    "notes": "Khách hàng yêu cầu cao",
+    "lastVisit": "2025-03-18",
+    "totalVisits": 4,
+    "totalSpent": 2900000
+  },
+  {
+    "name": "Đỗ Mỹ Tâm",
+    "email": "tam.do@example.com",
+    "phone": "0990543210",
+    "avatar": "https://randomuser.me/api/portraits/women/19.jpg",
+    "address": "33 Pasteur, Quận 1, TP. HCM",
+    "notes": "Thích dịch vụ chăm sóc tóc",
+    "lastVisit": "2025-04-14",
+    "totalVisits": 9,
+    "totalSpent": 6200000
+  },
+  {
+    "name": "Lưu Quang Anh",
+    "email": "anh.luu@example.com",
+    "phone": "0901432109",
+    "avatar": "https://randomuser.me/api/portraits/men/20.jpg",
+    "address": "91 Lý Chính Thắng, Quận 3, TP. HCM",
+    "notes": "Đặt lịch vào buổi tối",
+    "lastVisit": "2025-03-30",
+    "totalVisits": 2,
+    "totalSpent": 1400000
+  }
+] 
