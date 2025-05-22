@@ -6,7 +6,7 @@ import { STAFFS, WORK_SCHEDULE } from '@/constants'
 import { format } from 'date-fns'
 
 // Import từ các file TS đã tách
-import type { Booking } from './types'
+import type { Booking, Staff } from './types'
 import { 
   updateWorkingScheduleForDate, 
   generateTimeSlots, 
@@ -81,7 +81,7 @@ function generateAndSetBookings() {
   if (isOpen.value) {
     const dateStr = getFormattedDate(currentDate.value)
     bookings.value = generateBookings(
-      STAFFS,
+      STAFFS as unknown as Staff[], 
       dateStr,
       startHour.value,
       startMinute.value,
@@ -156,9 +156,9 @@ function handleEdit(booking: Booking) {
           <div class="time-header"></div>
           <div v-for="staff in STAFFS" :key="staff.id" class="staff-header">
             <div class="staff-info">
-              <n-avatar 
+              <n-avatar
                 round 
-                :size="36" 
+                :size="45" 
                 :src="staff.avatar" 
                 fallback-src="https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg"
                 class="staff-avatar"
@@ -269,11 +269,11 @@ h2, h3 {
 
 .staff-name {
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
 }
 
 .staff-position {
-  font-size: 0.75rem;
+  font-size: 1.2rem;
   font-weight: normal;
   color: #666;
   margin-top: 0;
@@ -286,7 +286,8 @@ h2, h3 {
 .time-label {
   text-align: right;
   padding-right: 8px;
-  font-size: 0.8rem;
+  font-size: 1rem;
+  font-weight: 3;
   display: flex;
   align-items: center;
   justify-content: flex-end;

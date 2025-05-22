@@ -28,11 +28,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import { 
   NCard, 
   NAvatar, 
-  NButton, 
   NSpace,
   NIcon,
 } from 'naive-ui'
