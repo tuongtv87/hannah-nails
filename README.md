@@ -1,95 +1,49 @@
-# Hannah Nails - Salon Management System
+# Lumiere Nail Atelier (Next.js + TypeScript + Tailwind)
 
-A comprehensive management system for nail salons built with Vue 3, TypeScript, and Electron.
+Premium nail salon website concept for an Australian business at **29 Castleton Street, Wodonga VIC 3690**.
 
-## Overview
+## Stack
+- Next.js (App Router)
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Lucide Icons
 
-Hannah Nails is a desktop application designed to streamline the management of nail salon operations with an intuitive and modern interface. Built with NaiveUI, Vue 3, and Electron, this application offers a complete solution for salon owners.
-
-## Features
-
-- **Service Management**: Create, update, and manage your salon's service offerings
-- **Appointment Scheduling**: Manage customer appointments and staff scheduling
-- **Customer Management**: Maintain customer records and history
-- **Staff Management**: Track staff performance and schedules
-- **Reporting & Analytics**: Generate reports on sales, services, and customer trends
-- **Dark/Light Theme**: Customizable UI with theme switching
-
-## Technology Stack
-
-- Vue 3 + TypeScript
-- Vite for fast builds
-- Electron for cross-platform desktop application
-- Naive UI component library
-- Pinia for state management
-- Vue Router for navigation
-- Alova for API requests
-
-## Installation & Setup
-
-### Prerequisites
-
-- Node.js (v16 or higher)
-- npm or yarn
-
-### Development Setup
-
-1. Clone the repository:
-   ```
-   git clone https://github.com/tuongtv87/hannah-nails.git
-   cd hannah-nails
-   ```
-
-2. Install dependencies:
-   ```
-   npm install
-   # or
-   yarn install
-   ```
-
-3. Run in development mode:
-   ```
-   # Web development mode
-   npm run dev
-   # or
-   yarn dev
-
-   # Electron development mode
-   npm run electron:dev
-   # or
-   yarn electron:dev
-   ```
-
-### Building for Production
-
+## Run locally
+```bash
+npm install
+npm run dev
 ```
-# Build for web
+
+## Build
+```bash
 npm run build
-# or
-yarn build
-
-# Build Electron application
-npm run electron:build
-# or
-yarn electron:build
+npm run start
 ```
 
-The Electron builds will be available in the `release` directory.
+## Edit content quickly
+Most business and page copy lives in:
+- `src/content/site.ts`
 
-## Project Structure
+Update this file to change:
+- Service names and AUD pricing
+- Gallery image URLs and alt text
+- Testimonials
+- FAQ
+- Promo offers
+- Business details, contact info, opening hours
 
-- `src/components` - Reusable UI components
-- `src/layouts` - Layout components (Header, Menu, Content)
-- `src/views` - Page components
-- `src/router` - Navigation configuration
-- `src/store` - Pinia state management
-- `src/utils` - Utility functions
-- `src/service` - API services and endpoints
+## Page routes
+- `/` Home
+- `/services`
+- `/gallery`
+- `/about`
+- `/reviews`
+- `/faq`
+- `/contact`
+- `/offers`
 
-## License
-
-MIT
-
-## Contact
-
-Hannah Nails Team - [GitHub](https://github.com/tuongtv87/hannah-nails)
+## Notes
+- No online booking feature is included by design.
+- Contact is handled via phone, message, and enquiry form.
+- Google Map embed points to the Wodonga address above.
