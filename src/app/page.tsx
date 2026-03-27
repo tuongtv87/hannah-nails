@@ -1,64 +1,141 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Gem, Heart, Instagram, ShieldCheck, Sparkles, Star } from "lucide-react";
+import { ArrowUpRight, CalendarCheck2, Instagram, MapPin, Star } from "lucide-react";
 
 import { BusinessInfo } from "@/components/contact/BusinessInfo";
+import { ContactForm } from "@/components/contact/ContactForm";
 import { MapEmbed } from "@/components/contact/MapEmbed";
 import { AnimatedInView } from "@/components/ui/AnimatedInView";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { CTAButtons } from "@/components/ui/CTAButtons";
 import { GalleryCard } from "@/components/ui/GalleryCard";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { ServiceCard } from "@/components/ui/ServiceCard";
-import { TestimonialCard } from "@/components/ui/TestimonialCard";
 import {
   aboutStory,
   business,
-  featuredServices,
+  faqs,
+  founder,
   galleryItems,
-  heroImage,
-  instagramShots,
+  heroPanels,
   promoOffer,
+  serviceGroups,
+  servicePreviews,
   stats,
-  testimonials,
-  whyChooseUs
+  teamMembers,
+  testimonials
 } from "@/content/site";
-
-const icons = [Sparkles, ShieldCheck, Heart, Gem];
 
 export default function HomePage() {
   return (
     <>
       <section className="shell pt-8 sm:pt-10">
-        <div className="relative overflow-hidden rounded-[2rem] border border-white/70 bg-rose-mist p-6 shadow-soft sm:p-10 lg:p-12">
-          <div className="pointer-events-none absolute -right-20 top-4 h-48 w-48 rounded-full bg-gold/20 blur-3xl" />
-
-          <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="soft-panel overflow-hidden p-6 sm:p-8 lg:p-10">
+          <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
             <AnimatedInView>
-              <span className="gold-pill">Luxury Nail Salon | Wodonga VIC</span>
-              <h1 className="mt-5 font-serif text-4xl leading-tight sm:text-5xl lg:text-6xl">
-                High-End Nail Artistry, Tailored for the Modern Woman
+              <span className="gold-pill">Minimal Nails In Wodonga</span>
+              <h1 className="mt-5 max-w-xl font-serif text-5xl leading-[0.96] sm:text-6xl lg:text-7xl">
+                Nails that feel polished, personal, and easy to wear.
               </h1>
-              <p className="mt-5 max-w-xl text-base leading-relaxed text-plum/80 sm:text-lg">
-                Welcome to {business.name}, where soft pink tones, precision technique, and personalised care
-                come together for beautifully polished results.
+              <p className="mt-5 max-w-lg text-base leading-relaxed text-plum/78 sm:text-lg">
+                {business.name} is a purple-toned boutique nail studio focused on clean prep, soft design,
+                and modern finishes that still feel like you.
               </p>
-              <CTAButtons className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap" />
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <ButtonLink href="/contact" className="gap-2">
+                  <CalendarCheck2 size={16} />
+                  Book Now
+                </ButtonLink>
+                <ButtonLink href="/services" variant="outline">
+                  View Services
+                </ButtonLink>
+              </div>
+              <div className="mt-8 flex flex-wrap items-center gap-6 text-sm text-plum/72">
+                <span className="inline-flex items-center gap-2">
+                  <Star size={16} className="fill-gold text-gold" />
+                  4.9 rating from returning clients
+                </span>
+                <span className="inline-flex items-center gap-2">
+                  <MapPin size={16} className="text-rose" />
+                  {business.addressLine1}, Wodonga
+                </span>
+              </div>
             </AnimatedInView>
 
-            <AnimatedInView delay={0.1} className="relative h-80 overflow-hidden rounded-3xl border border-white/70 sm:h-96">
+            <AnimatedInView delay={0.08}>
+              <div className="grid gap-4 sm:grid-cols-[1.2fr_0.8fr]">
+                <div className="relative h-[420px] overflow-hidden rounded-[2rem] border border-white/80 shadow-card">
+                  <Image
+                    src={heroPanels[0].src}
+                    alt={heroPanels[0].alt}
+                    fill
+                    priority
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 38vw"
+                  />
+                </div>
+                <div className="grid gap-4">
+                  {heroPanels.slice(1).map((panel) => (
+                    <div key={panel.src} className="relative h-[202px] overflow-hidden rounded-[2rem] border border-white/80 shadow-card">
+                      <Image src={panel.src} alt={panel.alt} fill className="object-cover" sizes="(max-width: 768px) 100vw, 24vw" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </AnimatedInView>
+          </div>
+        </div>
+      </section>
+
+      <section className="shell pt-10">
+        <div className="grid gap-4 md:grid-cols-3">
+          {servicePreviews.map((preview, index) => (
+            <AnimatedInView key={preview.title} delay={index * 0.05}>
+              <article className="glass-card h-full p-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-plum/55">{preview.count}</p>
+                <h2 className="mt-3 font-serif text-3xl">{preview.title}</h2>
+                <p className="mt-3 text-sm leading-relaxed text-plum/78">{preview.description}</p>
+                <Link href={preview.href} className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-plum hover:text-rose">
+                  Explore
+                  <ArrowUpRight size={15} />
+                </Link>
+              </article>
+            </AnimatedInView>
+          ))}
+        </div>
+      </section>
+
+      <section id="about" className="shell pt-16">
+        <div className="soft-panel overflow-hidden p-6 sm:p-8 lg:p-10">
+          <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+            <AnimatedInView className="relative h-[420px] overflow-hidden rounded-[2rem] border border-white/80">
               <Image
-                src={heroImage.src}
-                alt={heroImage.alt}
+                src="https://images.pexels.com/photos/7755637/pexels-photo-7755637.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt="Minimal salon interior and client beauty styling in a lavender-toned studio"
                 fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 45vw"
                 className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 40vw"
               />
-              <div className="absolute inset-x-4 bottom-4 rounded-2xl bg-white/84 p-4 shadow">
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-plum/70">Featured Offer</p>
-                <p className="mt-1 font-serif text-2xl text-plum">{promoOffer.title}</p>
-                <p className="text-sm text-plum/75">{promoOffer.subtitle}</p>
+            </AnimatedInView>
+
+            <AnimatedInView delay={0.08}>
+              <SectionHeading
+                label="About Hannah Nails"
+                title="A calmer, cleaner take on nail appointments."
+                description={aboutStory}
+              />
+              <p className="mt-5 max-w-2xl text-sm leading-relaxed text-plum/78">
+                {founder.quote}
+              </p>
+              <p className="mt-3 text-sm font-semibold uppercase tracking-[0.2em] text-plum/62">
+                {founder.name} | {founder.role}
+              </p>
+              <div className="mt-7 grid grid-cols-2 gap-3">
+                {stats.map((stat) => (
+                  <div key={stat.label} className="rounded-[1.5rem] border border-rose/20 bg-white/80 px-4 py-4">
+                    <p className="font-serif text-3xl text-plum">{stat.value}</p>
+                    <p className="text-xs uppercase tracking-[0.16em] text-plum/62">{stat.label}</p>
+                  </div>
+                ))}
               </div>
             </AnimatedInView>
           </div>
@@ -67,184 +144,188 @@ export default function HomePage() {
 
       <section id="services" className="shell pt-16">
         <SectionHeading
-          label="Featured Services"
-          title="Signature Treatments with Premium Finishes"
-          description="Every service is designed around healthy nails, elegant shaping, and long-lasting shine."
+          label="Our Services"
+          title="Simple service menus, refined results."
+          description="Our most-booked treatments are designed to feel wearable, polished, and easy to maintain."
+          align="center"
         />
-        <div className="mt-8 grid gap-5 md:grid-cols-2">
-          {featuredServices.map((service, idx) => (
-            <AnimatedInView key={service.name} delay={idx * 0.05}>
-              <ServiceCard service={service} />
+        <div className="mt-10 grid gap-5 lg:grid-cols-3">
+          {serviceGroups.map((group, index) => (
+            <AnimatedInView key={group.title} delay={index * 0.06}>
+              <article className="glass-card h-full p-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-plum/55">{group.items.length} treatments</p>
+                <h3 className="mt-3 font-serif text-3xl">{group.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-plum/76">{group.description}</p>
+                <div className="mt-6 space-y-4">
+                  {group.items.map((item) => (
+                    <div key={item.name} className="border-b border-rose/15 pb-4 last:border-b-0 last:pb-0">
+                      <div className="flex items-start justify-between gap-4">
+                        <div>
+                          <p className="font-semibold text-plum">{item.name}</p>
+                          <p className="mt-1 text-xs uppercase tracking-[0.15em] text-plum/55">{item.duration}</p>
+                        </div>
+                        <p className="text-sm font-semibold text-plum">{item.price}</p>
+                      </div>
+                      <p className="mt-2 text-sm leading-relaxed text-plum/72">{item.description}</p>
+                    </div>
+                  ))}
+                </div>
+                <ButtonLink href="/contact" variant="soft" className="mt-6 w-full">
+                  Book {group.title}
+                </ButtonLink>
+              </article>
             </AnimatedInView>
           ))}
         </div>
-        <AnimatedInView className="mt-8">
-          <ButtonLink href="/services" variant="outline">
-            Explore Full Service Menu
-          </ButtonLink>
-        </AnimatedInView>
       </section>
 
       <section className="shell pt-16">
-        <SectionHeading
-          label="Why Choose Us"
-          title="Where Luxury Beauty Meets Precise Nail Craft"
-          description="From hygiene to artistry, every detail is considered so you can relax and leave fully polished."
-        />
-        <div className="mt-8 grid gap-4 sm:grid-cols-2">
-          {whyChooseUs.map((item, idx) => {
-            const Icon = icons[idx % icons.length];
-            return (
-              <AnimatedInView key={item.title} delay={idx * 0.06}>
-                <article className="glass-card h-full p-6">
-                  <Icon className="text-rose" size={22} />
-                  <h3 className="mt-4 font-serif text-2xl">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-plum/80">{item.description}</p>
-                </article>
-              </AnimatedInView>
-            );
-          })}
-        </div>
-      </section>
-
-      <section id="gallery" className="shell pt-16">
-        <div className="flex items-end justify-between gap-4">
-          <SectionHeading
-            label="Gallery Preview"
-            title="Real Client Results & Studio Moments"
-            description="A curated look at our signature manicures, nail art details, and boutique salon atmosphere."
-          />
-          <ButtonLink href="/gallery" variant="soft" className="hidden sm:inline-flex">
-            View Full Gallery
-          </ButtonLink>
-        </div>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {galleryItems.slice(0, 4).map((item, idx) => (
-            <AnimatedInView key={item.src} delay={idx * 0.04}>
-              <GalleryCard item={item} />
-            </AnimatedInView>
-          ))}
-        </div>
-        <div className="mt-6 sm:hidden">
-          <ButtonLink href="/gallery" variant="soft" className="w-full">
-            View Full Gallery
-          </ButtonLink>
-        </div>
-      </section>
-
-      <section id="offers" className="shell pt-16">
-        <AnimatedInView>
-          <div className="rounded-[2rem] border border-gold/45 bg-[linear-gradient(135deg,#fff4e9_0%,#ffeef6_55%,#fff3fa_100%)] p-6 shadow-soft sm:p-8">
-            <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <p className="gold-pill">Promo / Special Offers</p>
-                <h2 className="mt-4 font-serif text-4xl leading-tight">{promoOffer.title}</h2>
-                <p className="mt-2 text-lg text-plum/80">{promoOffer.subtitle}</p>
-                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-plum/80">{promoOffer.description}</p>
-                <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-plum/65">
-                  {promoOffer.validity}
-                </p>
+        <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+          <AnimatedInView>
+            <div className="soft-panel p-6 sm:p-8">
+              <p className="gold-pill">Special Offer</p>
+              <h2 className="mt-5 max-w-xl font-serif text-4xl leading-tight sm:text-5xl">{promoOffer.title}</h2>
+              <p className="mt-3 text-lg text-plum/82">{promoOffer.subtitle}</p>
+              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-plum/76">{promoOffer.description}</p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <span className="rounded-full border border-rose/20 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-plum/60">
+                  BIAB + minimalist art
+                </span>
+                <span className="rounded-full border border-rose/20 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-plum/60">
+                  New and returning clients
+                </span>
               </div>
-              <ButtonLink href="/offers" variant="primary">
-                View Current Offers
-              </ButtonLink>
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                <ButtonLink href="/contact">Book Offer</ButtonLink>
+                <ButtonLink href="/offers" variant="outline">
+                  View Offer Details
+                </ButtonLink>
+              </div>
             </div>
-          </div>
-        </AnimatedInView>
+          </AnimatedInView>
+
+          <AnimatedInView delay={0.08}>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {galleryItems.slice(0, 4).map((item) => (
+                <GalleryCard key={item.src} item={item} />
+              ))}
+            </div>
+          </AnimatedInView>
+        </div>
       </section>
 
       <section id="reviews" className="shell pt-16">
         <SectionHeading
-          label="Testimonials"
-          title="Loved by Clients Across Albury-Wodonga"
-          description="Consistent quality and elegant results keep our clients coming back."
+          label="Client Love"
+          title="Soft, clean, compliment-worthy nails."
+          description="A few words from clients who book us for everyday polish, bridal nails, and BIAB maintenance."
+          align="center"
         />
-        <div className="mt-8 grid gap-4 md:grid-cols-2">
-          {testimonials.slice(0, 4).map((testimonial, idx) => (
-            <AnimatedInView key={testimonial.name} delay={idx * 0.06}>
-              <TestimonialCard testimonial={testimonial} />
+        <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {testimonials.map((testimonial, index) => (
+            <AnimatedInView key={testimonial.name} delay={index * 0.05}>
+              <article className="glass-card h-full p-6">
+                <div className="flex items-center gap-1 text-gold">
+                  {Array.from({ length: testimonial.rating }).map((_, i) => (
+                    <Star key={i} size={16} fill="currentColor" strokeWidth={0} />
+                  ))}
+                </div>
+                <p className="mt-4 text-sm leading-relaxed text-plum/82">“{testimonial.quote}”</p>
+                <div className="mt-5">
+                  <p className="font-semibold text-plum">{testimonial.name}</p>
+                  <p className="text-xs uppercase tracking-[0.16em] text-plum/55">{testimonial.role}</p>
+                </div>
+              </article>
             </AnimatedInView>
           ))}
         </div>
       </section>
 
-      <section id="about" className="shell pt-16">
-        <div className="grid gap-8 rounded-[2rem] border border-white/70 bg-white/80 p-6 shadow-card md:grid-cols-[1.1fr_0.9fr] md:p-10">
-          <AnimatedInView>
-            <SectionHeading
-              label="About Us"
-              title="A Boutique Nail Destination Built on Detail"
-              description={aboutStory}
-            />
-            <div className="mt-6 grid grid-cols-2 gap-3">
-              {stats.map((stat) => (
-                <div key={stat.label} className="rounded-2xl border border-rose/20 bg-rose/10 px-4 py-3">
-                  <p className="font-serif text-3xl text-plum">{stat.value}</p>
-                  <p className="text-xs uppercase tracking-[0.14em] text-plum/70">{stat.label}</p>
+      <section className="shell pt-16">
+        <SectionHeading
+          label="Meet The Team"
+          title="Small team, polished standards."
+          description="We keep the experience personal, calm, and consistent from the first message to the final top coat."
+        />
+        <div className="mt-10 grid gap-5 lg:grid-cols-3">
+          {teamMembers.map((member, index) => (
+            <AnimatedInView key={member.name} delay={index * 0.05}>
+              <article className="glass-card h-full overflow-hidden">
+                <div className="relative h-72">
+                  <Image src={member.image} alt={member.alt} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 30vw" />
                 </div>
-              ))}
-            </div>
-          </AnimatedInView>
-          <AnimatedInView delay={0.1} className="relative h-80 overflow-hidden rounded-3xl sm:h-[420px]">
-            <Image
-              src="https://images.pexels.com/photos/7755637/pexels-photo-7755637.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt="Premium nail salon interior with soft blush decor and elegant manicure stations"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 45vw"
-            />
-          </AnimatedInView>
+                <div className="p-6">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-plum/55">{member.role}</p>
+                  <h3 className="mt-2 font-serif text-3xl">{member.name}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-plum/76">{member.quote}</p>
+                  <div className="mt-5 flex gap-3">
+                    <ButtonLink href="/contact" variant="soft" className="flex-1">
+                      Book With {member.name}
+                    </ButtonLink>
+                  </div>
+                </div>
+              </article>
+            </AnimatedInView>
+          ))}
         </div>
       </section>
 
       <section className="shell pt-16">
-        <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
           <AnimatedInView>
             <SectionHeading
               label="Instagram"
-              title="Social Proof from Our Daily Work"
-              description="Follow us for fresh designs, client transformations, and monthly offers."
+              title="Our latest sets, studio moments, and close-up detail."
+              description="Follow our feed for fresh BIAB sets, soft chrome finishes, and appointment updates."
             />
-            <p className="mt-3 text-sm font-semibold uppercase tracking-[0.14em] text-plum/70">{business.instagram}</p>
-            <div className="mt-6 grid grid-cols-2 gap-4">
-              {instagramShots.map((shot) => (
-                <div key={shot.src} className="relative h-40 overflow-hidden rounded-2xl border border-white/70 sm:h-44">
-                  <Image src={shot.src} alt={shot.alt} fill className="object-cover" sizes="(max-width: 640px) 50vw, 25vw" />
-                </div>
-              ))}
-            </div>
             <a
               href={`https://www.instagram.com/${business.instagram.replace("@", "")}`}
               target="_blank"
               rel="noreferrer"
-              className="mt-6 inline-flex items-center gap-2 rounded-full border border-rose/35 bg-white px-5 py-3 text-sm font-semibold text-plum transition hover:bg-rose/10"
+              className="mt-6 inline-flex items-center gap-2 rounded-full border border-rose/30 bg-white/85 px-5 py-3 text-sm font-semibold text-plum transition hover:bg-rose/10"
             >
               <Instagram size={16} />
-              Follow on Instagram
+              Follow {business.instagram}
             </a>
           </AnimatedInView>
-
-          <AnimatedInView delay={0.1}>
-            <div className="glass-card p-6 sm:p-7">
-              <h2 className="font-serif text-3xl">Contact & Visit</h2>
-              <p className="mt-2 text-sm text-plum/78">
-                Call, message, or visit our Wodonga salon. We do not provide online booking at this stage.
-              </p>
-              <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                <a
-                  href={`tel:${business.mobile.replace(/\s+/g, "")}`}
-                  className="rounded-2xl border border-rose/25 bg-rose/10 px-4 py-3 text-sm font-semibold text-plum transition hover:bg-rose/20"
-                >
-                  Call Now
-                </a>
-                <a
-                  href={`mailto:${business.email}`}
-                  className="rounded-2xl border border-gold/35 bg-gold/15 px-4 py-3 text-sm font-semibold text-plum transition hover:bg-gold/25"
-                >
-                  Message Us
-                </a>
-              </div>
+          <AnimatedInView delay={0.08}>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {galleryItems.slice(4, 8).map((item) => (
+                <GalleryCard key={item.src} item={item} />
+              ))}
             </div>
+          </AnimatedInView>
+        </div>
+      </section>
+
+      <section id="faq" className="shell pt-16">
+        <SectionHeading
+          label="FAQ"
+          title="A few things clients usually ask first."
+          description="If you are unsure what to book, start with the enquiry form and we will guide you."
+          align="center"
+        />
+        <div className="mx-auto mt-10 max-w-4xl space-y-4">
+          {faqs.map((faq, index) => (
+            <AnimatedInView key={faq.question} delay={index * 0.03}>
+              <details className="glass-card p-5" open={index === 0}>
+                <summary className="cursor-pointer list-none pr-6 font-serif text-2xl text-plum">
+                  {faq.question}
+                </summary>
+                <p className="mt-3 text-sm leading-relaxed text-plum/78">{faq.answer}</p>
+              </details>
+            </AnimatedInView>
+          ))}
+        </div>
+      </section>
+
+      <section id="contact" className="shell pt-16">
+        <div className="grid gap-5 lg:grid-cols-[1.02fr_0.98fr]">
+          <AnimatedInView>
+            <ContactForm />
+          </AnimatedInView>
+          <AnimatedInView delay={0.08}>
+            <BusinessInfo />
             <div className="mt-4">
               <MapEmbed />
             </div>
@@ -252,54 +333,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="contact" className="shell pt-16">
-        <div className="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
-          <AnimatedInView>
-            <BusinessInfo />
-          </AnimatedInView>
-          <AnimatedInView delay={0.1} className="glass-card p-6 sm:p-7">
-            <h2 className="font-serif text-3xl">Ready for Your Next Nail Moment?</h2>
-            <p className="mt-3 max-w-xl text-sm leading-relaxed text-plum/80">
-              Whether you want a polished everyday set or a custom statement design, our team is here to craft
-              your perfect look.
-            </p>
-            <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              <ButtonLink href="/contact" variant="primary" className="sm:col-span-2">
-                Send an Enquiry Form
-              </ButtonLink>
-              <ButtonLink href="/services" variant="outline">
-                View Services
-              </ButtonLink>
-              <ButtonLink href="/offers" variant="soft">
-                See Promotions
-              </ButtonLink>
-            </div>
-            <div className="mt-6 rounded-2xl border border-rose/20 bg-rose/10 p-4 text-sm text-plum/85">
-              {business.addressLine1}, {business.addressLine2}
-            </div>
-          </AnimatedInView>
-        </div>
-      </section>
-
       <section className="shell pt-16">
-        <div className="rounded-[2rem] border border-plum/10 bg-plum px-6 py-10 text-center text-white shadow-soft sm:p-12">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-rose/80">Luxury. Feminine. Modern.</p>
-          <h2 className="mt-4 font-serif text-4xl sm:text-5xl">Experience Premium Nails in Wodonga</h2>
-          <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-white/80 sm:text-base">
-            From nude gloss classics to soft pink nail art, every set is crafted to feel polished, elevated, and
-            uniquely yours.
+        <div className="soft-panel p-6 text-center sm:p-10">
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-plum/55">Ready To Book?</p>
+          <h2 className="mt-4 font-serif text-4xl sm:text-5xl">Your next clean, glossy set starts here.</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-plum/76 sm:text-base">
+            Book by call, message, or enquiry form. We will help you choose the right service and make sure the final set feels exactly right.
           </p>
           <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <ButtonLink href="/contact" variant="outline" className="border-white/35 bg-white/10 text-white hover:bg-white/20">
-              Message Us Today
-            </ButtonLink>
-            <Link
-              href="/gallery"
-              className="inline-flex items-center gap-2 rounded-full border border-gold/50 bg-gold/20 px-6 py-3 text-sm font-semibold text-white transition hover:bg-gold/30"
-            >
-              <Star size={15} />
-              Browse Portfolio
-            </Link>
+            <ButtonLink href="/contact">Book Now</ButtonLink>
+            <CTAButtons className="flex flex-col gap-3 sm:flex-row" />
           </div>
         </div>
       </section>

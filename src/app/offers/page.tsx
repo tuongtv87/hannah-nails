@@ -9,13 +9,13 @@ import { promoOffer } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Special Offers",
-  description: "Discover limited-time promotions at Lumiere Nail Atelier."
+  description: "Discover limited-time promotions at Hannah Nails."
 };
 
 const offers = [
   {
-    name: "Soft Pink Glow Offer",
-    detail: "15% off selected nail art this month",
+    name: "Lavender Glow Offer",
+    detail: "15% off selected BIAB and minimalist art combinations",
     note: "Includes blush chrome, minimalist line art, and soft ombre upgrades.",
     icon: Sparkles
   },
@@ -38,7 +38,7 @@ export default function OffersPage() {
     <>
       <PageHero
         label="Promo / Special Offers"
-        title="Current Promotions at Lumiere"
+        title="Current Promotions at Hannah Nails"
         description="Seasonal and limited-time offers designed to elevate your regular nail routine."
         imageSrc="https://images.pexels.com/photos/7755656/pexels-photo-7755656.jpeg?auto=compress&cs=tinysrgb&w=1600"
         imageAlt="Luxury nail art close-up with rose and subtle gold accents"

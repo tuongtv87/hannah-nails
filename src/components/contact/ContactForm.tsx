@@ -13,9 +13,9 @@ export function ContactForm() {
 
   return (
     <section className="glass-card p-6 sm:p-7">
-      <h2 className="font-serif text-3xl">Send Us a Message</h2>
+      <h2 className="font-serif text-3xl">Book Your Appointment</h2>
       <p className="mt-2 text-sm text-plum/75">
-        Tell us your preferred service, date, and style inspiration. We will respond shortly.
+        Tell us your preferred service, date, and design mood. We will confirm the best option for you.
       </p>
 
       <form onSubmit={handleSubmit} className="mt-6 space-y-4" aria-label="Contact form">
@@ -74,8 +74,8 @@ export function ContactForm() {
             </option>
             <option value="russian-manicure">Russian Manicure</option>
             <option value="gel-manicure">Gel Manicure</option>
-            <option value="builder-gel">Builder Gel Overlay</option>
-            <option value="nail-art">Custom Nail Art</option>
+            <option value="builder-gel">BIAB Overlay</option>
+            <option value="nail-art">Minimal Nail Art</option>
             <option value="pedicure">Luxury Spa Pedicure</option>
           </select>
         </div>
@@ -90,7 +90,7 @@ export function ContactForm() {
             rows={5}
             required
             className="w-full rounded-xl border border-rose/30 bg-white px-4 py-3 text-sm text-plum outline-none ring-rose/30 transition focus:ring-2"
-            placeholder="Share your preferred date/time and inspiration..."
+            placeholder="Share your preferred date, time, and any inspo you like..."
           />
         </div>
 
@@ -99,12 +99,12 @@ export function ContactForm() {
           className="inline-flex items-center gap-2 rounded-full bg-plum px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#3d1e2d]"
         >
           <SendHorizontal size={16} />
-          Submit Enquiry
+          Send Booking Request
         </button>
 
         {submitted ? (
           <p className="rounded-xl border border-gold/45 bg-gold/15 px-4 py-3 text-sm text-plum" role="status">
-            Thank you. Your message has been received. Our team will contact you soon.
+            Thank you. Your booking request has been received. We will contact you shortly to confirm.
           </p>
         ) : null}
       </form>

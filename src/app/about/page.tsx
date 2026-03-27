@@ -9,7 +9,7 @@ import { aboutStory, stats } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Learn about Lumiere Nail Atelier and our premium approach to nail artistry in Wodonga."
+  description: "Learn about Hannah Nails and our minimal, polished approach to nail artistry in Wodonga."
 };
 
 const values = [
@@ -52,7 +52,7 @@ export default function AboutPage() {
             <SectionHeading
               label="Our Philosophy"
               title="Elegant Results, Calm Environment, Genuine Care"
-              description="We designed Lumiere Nail Atelier to feel polished yet welcoming. Every detail, from service flow to product selection, supports healthy nails and beautifully consistent results."
+              description="We designed Hannah Nails to feel polished yet welcoming. Every detail, from service flow to product selection, supports healthy nails and beautifully consistent results."
             />
             <div className="mt-6 grid grid-cols-2 gap-3">
               {stats.map((stat) => (

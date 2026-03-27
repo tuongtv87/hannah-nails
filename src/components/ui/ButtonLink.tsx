@@ -12,10 +12,10 @@ type ButtonLinkProps = {
 
 const variants = {
   primary:
-    "bg-plum text-white hover:bg-[#3f1f2f] shadow-soft border border-transparent",
+    "border border-transparent bg-plum text-white shadow-soft hover:bg-[#4a2e70]",
   outline:
-    "border border-rose/35 bg-white/90 text-plum hover:border-rose/60 hover:bg-rose/10",
-  soft: "border border-gold/45 bg-gold/15 text-plum hover:bg-gold/25"
+    "border border-rose/35 bg-white/90 text-plum hover:border-rose/55 hover:bg-rose/10",
+  soft: "border border-rose/25 bg-rose/10 text-plum hover:bg-rose/20"
 };
 
 export function ButtonLink({ href, children, variant = "primary", className }: ButtonLinkProps) {

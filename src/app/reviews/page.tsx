@@ -9,7 +9,7 @@ import { testimonials } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Reviews",
-  description: "Read client reviews for Lumiere Nail Atelier in Wodonga VIC."
+  description: "Read client reviews for Hannah Nails in Wodonga VIC."
 };
 
 export default function ReviewsPage() {

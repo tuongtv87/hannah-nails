@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --color-blush: 247 214 226;
-  --color-rose: 233 153 180;
-  --color-nude: 240 214 201;
-  --color-cream: 255 248 244;
-  --color-gold: 201 164 106;
-  --color-plum: 77 41 58;
+  --color-blush: 233 225 255;
+  --color-rose: 170 133 220;
+  --color-nude: 236 228 245;
+  --color-cream: 250 247 255;
+  --color-gold: 210 184 124;
+  --color-plum: 61 41 93;
 }
 
 html {
@@ -16,15 +16,17 @@ html {
 }
 
 body {
-  background: linear-gradient(180deg, #fff9fc 0%, #fff6f9 52%, #fff8f4 100%);
-  color: #3b2230;
+  background:
+    radial-gradient(circle at top left, rgba(206, 183, 247, 0.26), transparent 28%),
+    linear-gradient(180deg, #fbf8ff 0%, #f6f0ff 45%, #fcf9ff 100%);
+  color: #37284d;
   min-height: 100vh;
   font-family: var(--font-body), sans-serif;
 }
 
 ::selection {
-  background: rgba(233, 153, 180, 0.4);
-  color: #351a26;
+  background: rgba(170, 133, 220, 0.35);
+  color: #2d1f43;
 }
 
 @layer base {
@@ -32,13 +34,13 @@ body {
   h2,
   h3,
   h4 {
-    color: #391f2b;
+    color: #33214d;
     letter-spacing: -0.01em;
     font-family: var(--font-heading), serif;
   }
 
   p {
-    color: #5a3a48;
+    color: #5b4a74;
   }
 }
 
@@ -48,14 +50,18 @@ body {
   }
 
   .glass-card {
-    @apply rounded-3xl border border-white/70 bg-white/80 shadow-card backdrop-blur;
+    @apply rounded-3xl border border-white/70 bg-white/90 shadow-card backdrop-blur;
   }
 
   .gold-pill {
-    @apply inline-flex rounded-full border border-gold/50 bg-gold/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-plum;
+    @apply inline-flex rounded-full border border-rose/30 bg-rose/10 px-4 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-plum;
   }
 
   .link-underline {
     @apply relative after:absolute after:-bottom-1 after:left-0 after:h-[1.5px] after:w-0 after:bg-rose after:transition-all after:duration-300 hover:after:w-full;
+  }
+
+  .soft-panel {
+    @apply rounded-[2rem] border border-white/75 bg-[linear-gradient(160deg,rgba(255,255,255,0.92),rgba(243,236,255,0.96))] shadow-card;
   }
 }

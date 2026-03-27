@@ -9,7 +9,7 @@ import { PageHero } from "@/components/ui/PageHero";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Contact Lumiere Nail Atelier in Wodonga via phone, message, or enquiry form."
+  description: "Contact Hannah Nails in Wodonga via phone, message, or enquiry form."
 };
 
 export default function ContactPage() {

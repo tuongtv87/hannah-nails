@@ -4,7 +4,7 @@ export function MapEmbed() {
   return (
     <div className="overflow-hidden rounded-3xl border border-white/70 shadow-card">
       <iframe
-        title="Map to Lumiere Nail Atelier in Wodonga"
+        title="Map to Hannah Nails in Wodonga"
         src={business.mapEmbed}
         width="100%"
         height="100%"
