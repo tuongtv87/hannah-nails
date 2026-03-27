@@ -17,15 +17,15 @@ const config: Config = {
         plum: "rgb(var(--color-plum) / <alpha-value>)"
       },
       boxShadow: {
-        soft: "0 24px 56px -30px rgba(94, 62, 133, 0.45)",
-        card: "0 18px 44px -28px rgba(52, 33, 82, 0.3)"
+        soft: "0 24px 56px -30px rgba(171, 92, 129, 0.4)",
+        card: "0 18px 44px -28px rgba(99, 55, 75, 0.28)"
       },
       borderRadius: {
         xl2: "1.25rem"
       },
       backgroundImage: {
-        "hero-glow": "radial-gradient(circle at top right, rgba(214, 194, 255, 0.55), transparent 55%)",
-        "rose-mist": "linear-gradient(160deg, #f7f3ff 0%, #ede3ff 44%, #fcf7ff 100%)"
+        "hero-glow": "radial-gradient(circle at top right, rgba(248, 204, 223, 0.52), transparent 55%)",
+        "rose-mist": "linear-gradient(160deg, #fff7fb 0%, #fde8f1 44%, #fff8fb 100%)"
       }
     }
   },

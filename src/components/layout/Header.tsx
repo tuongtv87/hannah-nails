@@ -58,7 +58,7 @@ export function Header() {
           </a>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 rounded-full bg-plum px-5 py-2.5 text-sm font-semibold text-white shadow-soft transition hover:bg-[#4a2e70]"
+            className="inline-flex items-center gap-2 rounded-full bg-plum px-5 py-2.5 text-sm font-semibold text-white shadow-soft transition hover:bg-[#8b4562]"
           >
             <CalendarCheck2 size={16} />
             Book Now

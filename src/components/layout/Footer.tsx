@@ -10,7 +10,7 @@ export function Footer() {
         <div className="space-y-4">
           <p className="font-serif text-4xl text-plum">Hannah Nails</p>
           <p className="max-w-sm text-sm leading-relaxed text-plum/78">
-            Minimal nail artistry in Wodonga with clean prep, thoughtful design, and a soft lavender studio mood.
+            Minimal nail artistry in Wodonga with clean prep, thoughtful design, and a soft blush studio mood.
           </p>
           <a
             href={`https://www.instagram.com/${business.instagram.replace("@", "")}`}

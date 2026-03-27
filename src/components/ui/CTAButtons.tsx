@@ -11,7 +11,7 @@ export function CTAButtons({ className }: CTAButtonsProps) {
     <div className={className}>
       <a
         href={`tel:${business.mobile.replace(/\s+/g, "")}`}
-        className="inline-flex items-center justify-center gap-2 rounded-full bg-plum px-5 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-[#4a2e70]"
+        className="inline-flex items-center justify-center gap-2 rounded-full bg-plum px-5 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-[#8b4562]"
       >
         <Phone size={16} />
         Call Now

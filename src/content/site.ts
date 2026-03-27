@@ -91,13 +91,13 @@ export const openingHours = [
 
 export const heroImage = {
   src: "https://images.pexels.com/photos/3997385/pexels-photo-3997385.jpeg?auto=compress&cs=tinysrgb&w=1600",
-  alt: "Close-up of glossy lavender manicure with gold jewellery styling"
+  alt: "Close-up of glossy blush manicure with gold jewellery styling"
 };
 
 export const heroPanels: HeroPanel[] = [
   {
     src: "https://images.pexels.com/photos/3997385/pexels-photo-3997385.jpeg?auto=compress&cs=tinysrgb&w=1400",
-    alt: "Glossy lilac manicure photographed in soft studio lighting"
+    alt: "Glossy blush manicure photographed in soft studio lighting"
   },
   {
     src: "https://images.pexels.com/photos/7755656/pexels-photo-7755656.jpeg?auto=compress&cs=tinysrgb&w=1200",
@@ -247,7 +247,7 @@ export const serviceGroups: ServiceGroup[] = [
 export const galleryItems: GalleryItem[] = [
   {
     src: "https://images.pexels.com/photos/3997986/pexels-photo-3997986.jpeg?auto=compress&cs=tinysrgb&w=1400",
-    alt: "Glossy nude and lavender manicure close-up with minimalist styling",
+    alt: "Glossy nude and blush manicure close-up with minimalist styling",
     tag: "Signature Set"
   },
   {
@@ -257,7 +257,7 @@ export const galleryItems: GalleryItem[] = [
   },
   {
     src: "https://images.pexels.com/photos/3993444/pexels-photo-3993444.jpeg?auto=compress&cs=tinysrgb&w=1400",
-    alt: "Editorial nail set photographed on satin fabric with soft purple tones",
+    alt: "Editorial nail set photographed on satin fabric with soft pink tones",
     tag: "Editorial"
   },
   {
@@ -267,7 +267,7 @@ export const galleryItems: GalleryItem[] = [
   },
   {
     src: "https://images.pexels.com/photos/3997391/pexels-photo-3997391.jpeg?auto=compress&cs=tinysrgb&w=1400",
-    alt: "Palette of chic nail art inspiration with lilac, nude, and shimmer finishes",
+    alt: "Palette of chic nail art inspiration with blush, nude, and shimmer finishes",
     tag: "Design Menu"
   },
   {

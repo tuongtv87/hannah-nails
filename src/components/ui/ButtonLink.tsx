@@ -12,7 +12,7 @@ type ButtonLinkProps = {
 
 const variants = {
   primary:
-    "border border-transparent bg-plum text-white shadow-soft hover:bg-[#4a2e70]",
+    "border border-transparent bg-plum text-white shadow-soft hover:bg-[#8b4562]",
   outline:
     "border border-rose/35 bg-white/90 text-plum hover:border-rose/55 hover:bg-rose/10",
   soft: "border border-rose/25 bg-rose/10 text-plum hover:bg-rose/20"

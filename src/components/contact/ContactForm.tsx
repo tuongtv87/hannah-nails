@@ -96,7 +96,7 @@ export function ContactForm() {
 
         <button
           type="submit"
-          className="inline-flex items-center gap-2 rounded-full bg-plum px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#3d1e2d]"
+          className="inline-flex items-center gap-2 rounded-full bg-plum px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#8b4562]"
         >
           <SendHorizontal size={16} />
           Send Booking Request

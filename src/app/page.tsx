@@ -37,7 +37,7 @@ export default function HomePage() {
                 Nails that feel polished, personal, and easy to wear.
               </h1>
               <p className="mt-5 max-w-lg text-base leading-relaxed text-plum/78 sm:text-lg">
-                {business.name} is a purple-toned boutique nail studio focused on clean prep, soft design,
+                {business.name} is a blush-toned boutique nail studio focused on clean prep, soft design,
                 and modern finishes that still feel like you.
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -110,7 +110,7 @@ export default function HomePage() {
             <AnimatedInView className="relative h-[420px] overflow-hidden rounded-[2rem] border border-white/80">
               <Image
                 src="https://images.pexels.com/photos/7755637/pexels-photo-7755637.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                alt="Minimal salon interior and client beauty styling in a lavender-toned studio"
+                alt="Minimal salon interior and client beauty styling in a blush-toned studio"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 40vw"
